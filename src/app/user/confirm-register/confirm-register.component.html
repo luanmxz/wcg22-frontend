@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Confirme seu registro</h2>
+  <p>
+    Insira aqui o código que você recebeu email para confirmar seu cadastro.
+  </p>
+  <mat-form-field appearance="fill">
+    <mat-label>Insira o código de confirmação aqui</mat-label>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      [formControl]="confirmCode"
+      required
+    />
+    <mat-error *ngIf="confirmCode.invalid">{{ getErrorMessage() }}</mat-error>
+  </mat-form-field>
+  <button type="button" class="btn btn-send">Confirmar</button>
+  <a routerLink="bolao" class="msg-confirmado mt-3">
+    Confirmado com sucesso! Clique aqui para começar a jogar.
+  </a>
+  <p class="msg-codigo-invalido mt-3">Código inválido.</p>
+</div>

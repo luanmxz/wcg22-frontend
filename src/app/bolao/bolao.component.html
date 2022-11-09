@@ -1,0 +1,27 @@
+<div class="user">
+  <img
+    src="../../assets/undraw-male-avatar.svg"
+    alt="male-avatar"
+    class="avatar"
+  />
+  <div class="user-tabs">
+    <h2>Luanmxz</h2>
+    <div class="user-tabs__container">
+      <div class="user-tabs__links">
+        <a routerLink="jogos">Jogos</a>
+        <a routerLink="tabela-classificacao">Tabela de Classificação</a>
+        <a routerLink="ranking">Ranking</a>
+        <a routerLink="minhas-apostas">Minhas apostas</a>
+        <a *ngIf="getUserAdmin()">Admin</a>
+      </div>
+
+      <div class="user-tabs__light-dark-mode">
+        <mat-icon>wb_sunny</mat-icon>
+        <mat-slide-toggle value="warn"></mat-slide-toggle>
+        <mat-icon>brightness_3</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

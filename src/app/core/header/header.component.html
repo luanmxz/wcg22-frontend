@@ -1,0 +1,45 @@
+<aside #menuNavbar class="invisible">
+  <nav>
+    <ul>
+      <li><a routerLink="home">Home</a></li>
+      <li>Como jogar?</li>
+      <li>
+        <a
+          routerLink="bolao"
+          style="font-weight: bold; color: var(--color-2); font-size: large"
+          >Jogar</a
+        >
+      </li>
+      <li><a>Tabela de Classificação</a></li>
+      <li><a routerLink="ranking">Ranking</a></li>
+      <li *ngIf="userIsLogged(); else pleaseLogin">
+        <img
+          class="icon-avatar mb-2"
+          src="../../../assets/undraw-male-avatar.svg"
+          alt="icon avatar"
+        />
+        <h4>Luanmxz</h4>
+        <button class="btn-logout mt-2" type="button">Logout</button>
+      </li>
+    </ul>
+  </nav>
+  <button
+    #MenuButtonClose
+    class="close-navigator"
+    type="button"
+    (click)="menuHidden()"
+  >
+    <i class="fa-solid fa-angle-left fa-2x"></i>
+  </button>
+</aside>
+<button #menuButtonOpen class="navigator" type="button" (click)="menuAppears()">
+  <i class="fa-solid fa-bars fa-2x me-3 hide"></i>
+  <p>menu</p>
+</button>
+
+<ng-template #pleaseLogin>
+  <a class="go-to-login" routerLink="login">Login</a>
+  <a routerLink="register">Or create a account</a>
+</ng-template>
+
+<div #overlay class="overlay invisible" (click)="menuHidden()"></div>

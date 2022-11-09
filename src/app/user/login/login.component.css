@@ -1,0 +1,71 @@
+:host {
+  background-color: var(--color-3);
+  min-height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.background-draw {
+  grid-column: 1;
+  background-color: var(--color-1);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-draw img {
+  width: 70%;
+  min-width: 350px;
+  height: 70%;
+}
+
+.login-form {
+  grid-column: 2;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.btn-login {
+  background-color: var(--color-2);
+  color: var(--color-3);
+}
+
+h2 {
+  color: var(--color-2);
+}
+
+mat-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 900px) {
+  :host {
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 75%;
+  }
+
+  .background-draw {
+    grid-column: initial;
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .background-draw img {
+    width: 60%;
+    height: 90%;
+  }
+
+  .login-form {
+    grid-column: initial;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,43 @@
+:host {
+  background-color: var(--color-3);
+  min-height: 100%;
+  width: 100%;
+  display: grid;
+}
+
+.container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 90%;
+}
+
+.btn-send {
+  background-color: var(--color-1);
+  color: var(--color-3);
+  font-weight: bold;
+  transition: 0.4s ease-in-out;
+}
+.btn-send:hover {
+  transform: scale(1.07);
+}
+
+.msg-confirmado {
+  color: green;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}
+
+.msg-codigo-invalido {
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+}

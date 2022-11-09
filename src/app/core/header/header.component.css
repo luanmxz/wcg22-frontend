@@ -1,0 +1,127 @@
+aside {
+  height: 100%;
+  width: 90%;
+  max-width: 350px;
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+}
+
+nav {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-3);
+  border-right: 2px solid var(--color-2);
+}
+
+ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.close-navigator {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-2);
+  color: var(--color-3);
+  z-index: 1000;
+  align-self: center;
+  border-right: 2px solid var(--color-3);
+  border-top: 2px solid var(--color-3);
+  border-bottom: 2px solid var(--color-3);
+}
+
+.navigator {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  background-color: var(--color-2);
+  color: var(--color-3);
+  z-index: 1000;
+  left: 0;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  padding: 0.1rem;
+}
+
+.navigator p {
+  display: none;
+}
+
+.icon-avatar {
+  width: 70px;
+  height: 70px;
+}
+
+.go-to-login {
+  background-color: var(--color-2);
+  color: var(--color-3);
+  border: 0;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.7rem 2rem;
+  font-weight: bold;
+}
+
+.btn-logout {
+  background-color: var(--color-2);
+  color: var(--color-3);
+  padding: 0.3rem 0.6rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.invisible {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .navigator {
+    width: 60px;
+    height: 60px;
+    top: initial;
+    left: initial;
+    right: 0;
+    bottom: 0;
+    border-bottom-right-radius: initial;
+    border-top-right-radius: initial;
+    border-top-left-radius: 100%;
+    background-color: var(--color-2);
+    color: var(--color-3);
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+  }
+  .navigator .hide {
+    display: none;
+  }
+  .navigator p {
+    display: block;
+    margin: 0;
+    font-weight: bolder;
+    font-size: large;
+  }
+}

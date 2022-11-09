@@ -1,0 +1,40 @@
+:host {
+  min-height: 100%;
+  width: 100%;
+  display: grid;
+  background-color: var(--color-3);
+}
+
+.admin-login-form {
+  width: 90%;
+  max-width: 600px;
+  height: 80%;
+  max-height: 400px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  background-color: rgba(0, 198, 174, 0.8);
+  color: var(--color-3);
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+mat-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  opacity: 0.8;
+}
+
+.btn-login {
+  background-color: var(--color-3);
+  color: var(--color-2);
+  font-size: 1.3rem;
+}

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="filters">
+    <p>Grupo A</p>
+    <p>Grupo B</p>
+    <p>Grupo C</p>
+    <p>Grupo D</p>
+    <p>Grupo E</p>
+    <p>Grupo F</p>
+    <p>Grupo G</p>
+    <p>Grupo H</p>
+  </div>
+
+  <div class="container-jogos">
+    <div class="card-jogo" *ngFor="let jogo of jogos">
+      <p>22/11 - 13:00</p>
+      <div class="grid-c1">
+        <img src="../../../assets/flags/qatar-flag.webp" class="flag" />
+        <p>Catar</p>
+      </div>
+      <div class="grid-c2">
+        <p>X</p>
+      </div>
+      <div class="grid-c3">
+        <img src="../../../assets/flags/ecuador-flag.webp" class="flag" />
+        <p>Equador</p>
+      </div>
+      <button class="btn-aposta">apostar</button>
+      <button class="btn-aposta btn-aposta-empate">empate</button>
+      <button class="btn-aposta">apostar</button>
+    </div>
+  </div>
+  <div class="filters rodadas">
+    <p>Rodada 1</p>
+    <p>Rodada 2</p>
+    <p>Rodada 3</p>
+  </div>
+</div>
