@@ -1,13 +1,61 @@
-<div class="my-infos mt-3"></div>
-
 <div class="my-gambles mt-3">
   <h2>Minhas apostas</h2>
   <table>
-    <tr>
-      <td>11/11</td>
-      <td>Jogo: Catar x Equador</td>
-      <td>Apostou em: Vitória de Catar</td>
-      <td>Resultado: --</td>
+    <tr *ngFor="let aposta of apostas">
+      <td>Aposta feita em: {{ aposta.dataDaAposta | date: "dd/MM/yyyy" }}</td>
+      <td>
+        {{ aposta.idJogo.idTimeA.nomeSelecao }} X
+        {{ aposta.idJogo.idTimeB.nomeSelecao }}
+      </td>
+      <td *ngIf="aposta.apostouEm == 'A'">
+        Apostou em:
+        <span style="font-weight: 500">{{
+          aposta.idJogo.idTimeA.nomeSelecao
+        }}</span>
+      </td>
+      <td *ngIf="aposta.apostouEm == 'B'">
+        Apostou em:
+        <span style="font-weight: 500">{{
+          aposta.idJogo.idTimeB.nomeSelecao
+        }}</span>
+      </td>
+      <td *ngIf="aposta.apostouEm == 'E'" style="font-weight: 500">
+        Apostou em: <span style="font-weight: 500">Empate</span>
+      </td>
+      <td *ngIf="aposta.estaAtiva == true" style="font-weight: 500">
+        Resultado: A decidir
+      </td>
+      <td *ngIf="aposta.estaAtiva == false" style="font-weight: 500">
+        Resultado: {{ aposta.idJogo.resultado }}
+      </td>
+      <td
+        *ngIf="
+          aposta.estaAtiva == false &&
+          aposta.apostouEm == aposta.idJogo.resultado
+        "
+        style="
+          background-color: rgb(31, 233, 31);
+          color: rgba(255, 255, 255, 0.898);
+          font-weight: bold;
+        "
+      >
+        Aposta ganha
+      </td>
+      <td
+        *ngIf="
+          aposta.estaAtiva == false &&
+          aposta.apostouEm != aposta.idJogo.resultado
+        "
+        style="background-color: red; color: white; font-weight: bold"
+      >
+        Aposta perdida
+      </td>
+      <td
+        *ngIf="aposta.estaAtiva == true"
+        style="background-color: rgb(229, 229, 14); font-weight: bold"
+      >
+        Aguardando resultado da partida
+      </td>
     </tr>
   </table>
 </div>

@@ -1,101 +1,76 @@
-:host {
-  width: 80vw;
-  grid-column: 1 / 3;
-  grid-row: 2;
-  justify-self: center;
-  align-self: flex-start;
-  padding: 0.4rem;
-  display: grid;
-}
-
 .container {
   width: 100%;
+  min-height: 100%;
   justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15% 85%;
+  align-items: center;
+  /*border: 2px solid green;*/
+}
+
+.wrapper-for-grupos {
+  display: flex;
+  flex-direction: row;
+  gap: 1%;
+  align-self: flex-start;
+}
+
+.btn-grupos {
+  width: 120px;
+  background-color: var(--color-2);
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.wrapper-for-jogos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.card-for-jogo {
+  width: 320px;
+  height: 360px;
+  background-color: #e87d7d;
+  display: grid;
+  grid-template-rows: 35% 65%;
+}
+
+.card-header {
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  padding-top: 20px;
 }
-
-.filters {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5%;
-  margin-top: 20px;
-}
-.filters p {
-  padding: 0.3rem 0.5rem;
-  background-color: rgba(147, 23, 59, 0.7);
-  border-radius: 30px;
-  color: var(--color-3);
-  font-weight: bold;
-  transition: 0.25s ease-in-out;
-}
-.filters p:hover {
-  background-color: rgba(147, 23, 59, 1);
-}
-
-.container-jogos {
-  justify-self: center;
-  display: flex;
-  gap: 0.7%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding: 0.5rem 0;
-}
-.card-jogo {
-  width: 260px;
-  height: 170px;
-  background-color: var(--color-3);
+.card-body {
   grid-row: 2;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
-  grid-template-rows: 30% 40% 30%;
-  border: 2px solid var(--color-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.card-jogo p {
-  grid-column: 2;
-}
-.card-jogo p:first-child {
-  grid-column: 1 / 4;
-  align-self: flex-end;
-}
-.grid-c1 {
-  grid-column: 1;
-}
-.grid-c2 {
-  grid-column: 2;
-}
-.grid-c3 {
-  grid-column: 3;
-}
+
 .btn-aposta {
-  background-color: var(--color-2);
-  color: var(--color-3);
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-.btn-aposta-empate {
-  background-color: var(--color-1);
+  padding: 1rem 2rem;
+  background-color: white;
 }
 
-.flag {
-  width: 60px;
-  height: 40px;
+.resultado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
-
-.rodadas p {
-  background-color: rgba(0, 198, 174, 0.7);
-}
-.rodadas p:hover {
-  background-color: rgba(0, 198, 174, 1);
-}
-
-:host::-webkit-scrollbar {
+/*:host::-webkit-scrollbar {
   width: 15px;
   height: 15px;
 }
@@ -127,3 +102,4 @@
 :host::-webkit-scrollbar-corner {
   background: transparent;
 }
+*/

@@ -1,37 +1,48 @@
 <div class="container">
-  <div class="filters">
-    <p>Grupo A</p>
-    <p>Grupo B</p>
-    <p>Grupo C</p>
-    <p>Grupo D</p>
-    <p>Grupo E</p>
-    <p>Grupo F</p>
-    <p>Grupo G</p>
-    <p>Grupo H</p>
+  <div class="wrapper-for-grupos">
+    <button
+      class="btn-grupos"
+      *ngFor="let grupo of grupos"
+      (click)="changeGroup(grupo.id)"
+    >
+      Grupo {{ grupo.nomeGrupo }}
+    </button>
   </div>
-
-  <div class="container-jogos">
-    <div class="card-jogo" *ngFor="let jogo of jogos">
-      <p>22/11 - 13:00</p>
-      <div class="grid-c1">
-        <img src="../../../assets/flags/qatar-flag.webp" class="flag" />
-        <p>Catar</p>
+  <div class="wrapper-for-jogos">
+    <div class="card-for-jogo" *ngFor="let jogo of jogosGrupoA">
+      <div class="card-header">
+        <h3>{{ jogo.idTimeA.nomeSelecao }}</h3>
+        <h3>X</h3>
+        <h3>{{ jogo.idTimeB.nomeSelecao }}</h3>
       </div>
-      <div class="grid-c2">
-        <p>X</p>
+      <div class="card-body">
+        <h4>{{ jogo.dataInicio }}</h4>
+        <div class="resultado" *ngIf="jogo.jaAconteceu">
+          <h4>Resultado</h4>
+          <h2 *ngIf="jogo.resultado == 'ND'" style="color: green">
+            {{ jogo.idTimeA.nomeSelecao }}
+          </h2>
+          <h2 *ngIf="jogo.resultado == 'B'" style="color: green">
+            {{ jogo.idTimeB.nomeSelecao }}
+          </h2>
+          <h2 *ngIf="jogo.resultado == 'E'" style="color: yellow">EMPATE</h2>
+          <h4>{{ jogo.golsA }} x {{ jogo.golsB }}</h4>
+        </div>
+        <button
+          (click)="
+            addAposta(
+              jogo.id,
+              jogo.idTimeA.nomeSelecao,
+              jogo.idTimeB.nomeSelecao
+            )
+          "
+          type="button"
+          class="btn-aposta"
+          *ngIf="!jogo.jaAconteceu"
+        >
+          Apostar
+        </button>
       </div>
-      <div class="grid-c3">
-        <img src="../../../assets/flags/ecuador-flag.webp" class="flag" />
-        <p>Equador</p>
-      </div>
-      <button class="btn-aposta">apostar</button>
-      <button class="btn-aposta btn-aposta-empate">empate</button>
-      <button class="btn-aposta">apostar</button>
     </div>
-  </div>
-  <div class="filters rodadas">
-    <p>Rodada 1</p>
-    <p>Rodada 2</p>
-    <p>Rodada 3</p>
   </div>
 </div>

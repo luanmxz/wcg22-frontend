@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
-import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,16 +11,20 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   hide = true;
 
+  fromUrl!: string;
   loginForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private loginService: LoginService
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.fromUrl = params['fromUrl'];
+    });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -36,15 +39,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService
-      .getAccessToken(
+    this.authService
+      .userAuthenticate(
         this.loginForm.controls['email'].value,
         this.loginForm.controls['password'].value
       )
-      .subscribe((response) => {
-        // ...any login logic- cookies and all the good stuff goes here
-        console.log('ERRO AQUI' + response);
+      .subscribe(() => {
+        this.router.navigate(['/bolao']); //.then(() => window.location.reload());
+        console.log('Resposta do back-end: ');
       }),
-      (err: Error) => console.log(`Erro ao realizar o login -> ${err}`);
+      (err: Error) => {
+        console.log(err);
+        this.loginForm.reset();
+        alert('invalid user name or password');
+      };
   }
 }

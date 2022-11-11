@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmedValidator } from '../password-validator';
-import { UserService } from '../user-service/user.service';
+import { RegisterService } from './register.service';
 
 @Component({
   selector: 'app-register',
@@ -21,16 +21,31 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private registerService: RegisterService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
-        name: ['', [Validators.required, Validators.maxLength(15)]],
+        name: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(15),
+          ],
+        ],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8)]],
+
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(18),
+          ],
+        ],
         confirmPassword: ['', [Validators.required]],
       },
       {
@@ -40,23 +55,40 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    if (this.registerForm.valid && !this.registerForm.pending) {
+      this.registerService
+        .createUser(
+          this.registerForm.controls['name'].value,
+          this.registerForm.controls['password'].value,
+          this.registerForm.controls['email'].value
+        )
+        .subscribe(() => {
+          this.router.navigate(['/bolao']); //.then(() => window.location.reload());
+        }),
+        (err: Error) => console.log(`Erro ao realizar o login -> ${err}`);
+    }
+  }
+
+  /*register() {
     const formData = this.registerForm.getRawValue();
     const user = {
       name: formData.name,
       email: formData.email,
       password: formData.password,
-      createdAt: new Date(),
-      lastUpdate: new Date(),
-      admin: false,
     };
-    this.userService.register(user).subscribe(() => {
-      console.log(`Usuário ${user} cadastrado com sucesso`);
-      this.router.navigateByUrl('login');
-    }),
+    console.log(
+      `Dados a serem registrados: ${user.name}, ${user.email}, ${user.password}`
+    );
+    this.userService
+      .register(user.name, user.email, user.password)
+      .subscribe(() => {
+        console.log(`Usuário ${user} cadastrado com sucesso`);
+        this.router.navigateByUrl('login');
+      }),
       (err: Error) => console.log(`Erro ao cadastrar o usuário ${err}`);
-  }
+  }*/
 
-  updateUserById() {
+  /*updateUserById() {
     const formData = this.registerForm.getRawValue();
     const user = {
       name: formData.name,
@@ -69,5 +101,5 @@ export class RegisterComponent implements OnInit {
       console.log(`Usuário ${user.name} alterado com sucesso`);
     }),
       (err: Error) => console.log(`Erro ao alterar o usuário -> ${err}`);
-  }
+  } */
 }

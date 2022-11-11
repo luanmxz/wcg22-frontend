@@ -1,0 +1,75 @@
+<form
+  [formGroup]="setResultForm"
+  (ngSubmit)="updateJogoById(setResultForm.value)"
+>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Gols do Time A</mat-label>
+    <input matInput type="number" formControlName="golsA" />
+    <button
+      class="close_button"
+      *ngIf="setResultForm.get('golsA')?.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="setResultForm.controls['golsA'].reset()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <span
+      class="text-muted"
+      *ngIf="
+        setResultForm.get('golsA')?.hasError('required') &&
+        setResultForm.get('golsA')?.touched
+      "
+      >Campo obrigatório.</span
+    >
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Gols do Time B</mat-label>
+    <input matInput type="number" formControlName="golsB" />
+    <button
+      class="close_button"
+      *ngIf="setResultForm.get('golsB')?.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="setResultForm.controls['golsB'].reset()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <span
+      class="text-muted"
+      *ngIf="
+        setResultForm.get('golsB')?.hasError('required') &&
+        setResultForm.get('golsB')?.touched
+      "
+      >Campo obrigatório.</span
+    >
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Time vencedor</mat-label>
+    <input matInput type="text" formControlName="resultado" maxlength="30" />
+    <button
+      class="close_button"
+      *ngIf="setResultForm.get('resultado')?.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="setResultForm.controls['resultado'].reset()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <span
+      class="text-muted"
+      *ngIf="
+        setResultForm.get('resultado')?.hasError('required') &&
+        setResultForm.get('resultado')?.touched
+      "
+      >Campo obrigatório.</span
+    >
+  </mat-form-field>
+
+  <button class="update_button" type="submit">Atualizar</button>
+</form>

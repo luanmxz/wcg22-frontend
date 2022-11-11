@@ -6,16 +6,33 @@ import { JogosComponent } from './jogos/jogos.component';
 import { TabelaClassificacaoComponent } from './tabela-classificacao/tabela-classificacao.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ApostasComponent } from './apostas/apostas.component';
+import { LoginGuard } from '../core/auth/login.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: BolaoComponent,
     children: [
-      { path: 'jogos', component: JogosComponent },
-      { path: 'tabela-classificacao', component: TabelaClassificacaoComponent },
-      { path: 'ranking', component: RankingComponent },
-      { path: 'minhas-apostas', component: ApostasComponent },
+      {
+        path: 'jogos',
+        component: JogosComponent,
+        data: { title: 'Jogos da Copa' },
+      },
+      {
+        path: 'tabela-classificacao',
+        component: TabelaClassificacaoComponent,
+        data: { title: 'Tabela de Classificação das Seleções' },
+      },
+      {
+        path: 'ranking',
+        component: RankingComponent,
+        data: { title: 'Ranking dos usuários' },
+      },
+      {
+        path: 'minhas-apostas',
+        component: ApostasComponent,
+        data: { title: 'Minhas apostas' },
+      },
     ],
   },
 ];

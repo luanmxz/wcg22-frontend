@@ -7,27 +7,14 @@
 <table class="mt-4">
   <thead>
     <tr>
-      <th>º</th>
       <th>Username</th>
       <th>Pontos</th>
-      <th>Apostas certas</th>
-      <th>Apostas erradas</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Luanmxz</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Teste</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+    <tr *ngFor="let user of users">
+      <td>{{ user.nome }}</td>
+      <td>{{ user.pontos }}</td>
     </tr>
   </tbody>
 </table>

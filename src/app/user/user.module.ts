@@ -11,7 +11,12 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ConfirmRegisterComponent } from './confirm-register/confirm-register.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ForgotPasswordComponent, ConfirmRegisterComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    ConfirmRegisterComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

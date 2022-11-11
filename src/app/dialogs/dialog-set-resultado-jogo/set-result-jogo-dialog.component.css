@@ -1,0 +1,61 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+mat-form-field {
+  width: 100%;
+}
+
+.close_button {
+  border-radius: 1rem;
+  border-style: none;
+  color: var(--color-main-1);
+}
+.close_button:hover {
+  transform: scale(1.2);
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.update_button {
+  width: 30%;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  background-color: var(--color-2);
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: large;
+  border: none;
+  transition: 1s ease-in-out;
+}
+.update_button:hover {
+  width: 80%;
+}
+
+.back_button {
+  border: none;
+  background-color: white;
+  color: var(--color-main-1);
+  cursor: pointer;
+  margin-left: 1rem;
+  padding-top: 0.5rem;
+  transition: 0.3s ease-in-out;
+  font-weight: bold;
+}
+.back_button:hover {
+  transform: scale(1.2);
+}
+
+span {
+  color: var(--color-red);
+  font-size: x-small;
+}
