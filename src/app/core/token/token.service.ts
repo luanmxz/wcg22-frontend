@@ -18,7 +18,7 @@ export class TokenService {
   }
 
   getToken() {
-    return window.localStorage.getItem(KEY) as string;
+    return window.localStorage.getItem(KEY);
   }
 
   removeToken() {
@@ -27,7 +27,7 @@ export class TokenService {
 
   hasExpired() {
     if (this.hasToken()) {
-      const token: any = jwtDecode(this.getToken());
+      const token: any = jwtDecode(this.getToken()!);
       const currentTime = Date.now() / 1000;
       return token.expires_in < currentTime;
     }

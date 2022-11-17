@@ -1,4 +1,4 @@
-import { Resultado } from '../jogos/Resultado';
+import { Resultado } from './Resultado';
 
 export interface NovaAposta {
   apostouEm: Resultado;

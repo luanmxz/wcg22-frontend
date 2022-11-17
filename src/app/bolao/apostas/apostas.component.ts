@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Aposta } from './Aposta';
-import { ApostaService } from './apostas.service';
+import { User } from 'src/app/core/interfaces/user';
+import { UserService } from 'src/app/user/user-service/user.service';
+import { Aposta } from '../interfaces/Aposta';
+import { ApostaService } from '../services/apostas.service';
 
 @Component({
   selector: 'app-apostas',
@@ -8,15 +10,24 @@ import { ApostaService } from './apostas.service';
   styleUrls: ['./apostas.component.css'],
 })
 export class ApostasComponent implements OnInit {
+  currentUser!: User;
   apostas: Aposta[] = [];
 
-  constructor(private apostasService: ApostaService) {}
+  constructor(
+    private apostasService: ApostaService,
+    private userService: UserService
+  ) {
+    this.userService.getUser().subscribe((user) => {
+      this.populaApostas(user.id);
+      this.currentUser = user;
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  populaApostas(idUser: number) {
     this.apostasService
-      .getApostasByUser(1)
-      .subscribe((apostas: Aposta[]) =>
-        apostas.forEach((a) => this.apostas.push(a))
-      );
+      .getApostasByUser(idUser)
+      .subscribe((apostas: Aposta[]) => (this.apostas = apostas));
   }
 }

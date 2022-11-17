@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmRegisterComponent } from './confirm-register/confirm-register.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ConfirmRegisterComponent } from './confirm-register/confirm-register.co
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    RouterModule,
   ],
   exports: [],
 })

@@ -11,6 +11,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ApostasComponent } from './apostas/apostas.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ApostasComponent } from './apostas/apostas.component';
     BolaoRoutingModule,
     MatIconModule,
     MatSlideToggleModule,
+    OrderModule,
   ],
 })
 export class BolaoModule {}

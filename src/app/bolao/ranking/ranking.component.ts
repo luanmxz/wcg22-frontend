@@ -9,6 +9,7 @@ import { UserUtilsService } from 'src/app/user/user-service/userUtils.service';
 })
 export class RankingComponent implements OnInit {
   users: UserRanking[] = [];
+  order: string = 'pontos';
 
   constructor(private userRankingService: UserUtilsService) {}
 

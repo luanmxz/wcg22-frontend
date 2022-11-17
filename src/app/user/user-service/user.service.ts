@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthToken } from 'src/app/core/auth/authToken';
 import { User } from 'src/app/core/interfaces/user';
 import { TokenService } from 'src/app/core/token/token.service';
+import { UserUtilsService } from './userUtils.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +12,20 @@ import { TokenService } from 'src/app/core/token/token.service';
 export class UserService {
   private userSubject = new BehaviorSubject<User>({
     id: 0,
-    username: '',
+    nome: '',
     email: '',
+    pontos: 0,
   });
-  private userName!: string;
 
-  constructor(private tokenService: TokenService) {
+  constructor(
+    private tokenService: TokenService,
+    private userUtilsService: UserUtilsService
+  ) {
     this.tokenService.hasToken() && this.decodeAndNotify();
+  }
+
+  getToken() {
+    return this.tokenService.getToken();
   }
 
   setToken(token: string) {
@@ -24,17 +33,17 @@ export class UserService {
     this.decodeAndNotify();
   }
 
-  getUser() {
-    return this.userSubject.asObservable();
+  setUser(user: User) {
+    this.userSubject.next(user);
   }
 
-  getUserName() {
-    return this.userName;
+  getUser(): Observable<User> {
+    return this.userSubject.asObservable();
   }
 
   logout() {
     this.tokenService.removeToken();
-    this.userSubject.next({ id: 0, username: '', email: '' }); // -> no alurapic esta next(null)
+    this.userSubject.next({ id: 0, nome: '', email: '', pontos: 0 });
   }
 
   isLogged() {
@@ -43,8 +52,16 @@ export class UserService {
 
   private decodeAndNotify() {
     const token = this.tokenService.getToken();
-    const payloadUser = jwt_decode(token!) as User;
-    this.userName = payloadUser.username;
-    this.userSubject.next(payloadUser);
+    const payloadUser = jwt_decode(token!) as AuthToken;
+    this.userUtilsService
+      .getUserByEmail(payloadUser.user_name)
+      .subscribe((user) =>
+        this.setUser({
+          id: user.id,
+          email: user.email,
+          pontos: user.pontos,
+          nome: user.nome,
+        })
+      );
   }
 }

@@ -10,15 +10,17 @@
           >Jogar</a
         >
       </li>
-      <li><a>Tabela de Classificação</a></li>
-      <li><a routerLink="ranking">Ranking</a></li>
-      <li *ngIf="userIsLogged(); else pleaseLogin">
+      <li>
+        <a routerLink="bolao/tabela-classificacao">Tabela de Classificação</a>
+      </li>
+      <li><a routerLink="bolao/ranking">Ranking</a></li>
+      <li *ngIf="!userIsLogged(); else pleaseLogin">
         <img
           class="icon-avatar mb-2"
           src="../../../assets/undraw-male-avatar.svg"
           alt="icon avatar"
         />
-        <h4>Luanmxz</h4>
+        <h4>Nome de usuário aqui</h4>
         <button class="btn-logout mt-2" type="button">Logout</button>
       </li>
     </ul>

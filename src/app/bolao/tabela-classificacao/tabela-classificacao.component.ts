@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Selecao } from '../jogos/Selecao';
-import { SelecaoService } from '../jogos/selecao.service';
+import { Selecao } from '../interfaces/Selecao';
+import { SelecaoService } from '../services/selecao.service';
 
 @Component({
   selector: 'app-tabela-classificacao',
@@ -10,11 +9,9 @@ import { SelecaoService } from '../jogos/selecao.service';
 })
 export class TabelaClassificacaoComponent implements OnInit {
   selecoes: Selecao[] = [];
+  order: string = 'pontos';
 
-  constructor(
-    private http: HttpClient,
-    private selecaoService: SelecaoService
-  ) {}
+  constructor(private selecaoService: SelecaoService) {}
 
   ngOnInit(): void {
     this.selecaoService
@@ -22,6 +19,5 @@ export class TabelaClassificacaoComponent implements OnInit {
       .subscribe((selecao: Selecao[]) =>
         selecao.forEach((s) => this.selecoes.push(s))
       );
-    console.log(this.selecoes);
   }
 }

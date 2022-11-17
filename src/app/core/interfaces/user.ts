@@ -1,8 +1,8 @@
 export interface User {
   id: number;
-  username: string;
+  nome: string;
   email: string;
+  pontos: number;
   //password: string;
-  //pontos: number;
   //admin: boolean;
 }

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ApostaService } from '../bolao/apostas/apostas.service';
+import { ApostaService } from '../bolao/services/apostas.service';
 
 @Component({
   selector: 'app-new-aposta-dialog',
@@ -20,9 +20,11 @@ export class NewApostaDialogComponent implements OnInit {
   nomeSelecaoB!: String;
   empate: String = 'EMPATE';
   idJogo!: number;
+  idUser!: number;
 
   ngOnInit(): void {
-    (this.nomeSelecaoA = this.data.nomeSelecaoA),
+    (this.idUser = this.data.idUser),
+      (this.nomeSelecaoA = this.data.nomeSelecaoA),
       (this.nomeSelecaoB = this.data.nomeSelecaoB),
       (this.idJogo = this.data.idJogo),
       (this.novaApostaForm = this.formBuilder.group({
@@ -37,9 +39,7 @@ export class NewApostaDialogComponent implements OnInit {
     if (apostouEm == this.empate) apostouEm = 'E';
     console.log('aposta criado com o valor de: ' + apostouEm);
     this.apostasService
-      .createAposta(apostouEm, 1, this.idJogo)
-      .subscribe(() =>
-        console.log('aposta criado com o valor de: ' + apostouEm)
-      );
+      .createAposta(apostouEm, this.idUser, this.idJogo)
+      .subscribe(() => alert('Aposta realizada com sucesso!'));
   }
 }

@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Selecao } from './Selecao';
+import { Grupo } from '../interfaces/Grupo';
 
-const API = 'http://localhost:8091/api/selecoes/';
+const API = 'http://localhost:8091/api/grupos/';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SelecaoService {
+export class GrupoService {
   constructor(private http: HttpClient) {}
 
-  findAllSelecoes(): Observable<Selecao[]> {
-    return this.http.get<Selecao[]>(API);
+  findAllGrupos(): Observable<Grupo[]> {
+    return this.http.get<Grupo[]>(API);
   }
 }

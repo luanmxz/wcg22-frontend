@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/core/interfaces/user';
 import { UserRanking } from './UserRanking';
 
 const API = 'http://localhost:8091/api/usuarios';
@@ -13,5 +14,9 @@ export class UserUtilsService {
 
   findAllUsersForRanking(): Observable<UserRanking[]> {
     return this.http.get<UserRanking[]>(API + '/ranking');
+  }
+
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(API + `/find/${email}`);
   }
 }

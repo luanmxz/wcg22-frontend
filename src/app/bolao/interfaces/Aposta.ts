@@ -1,6 +1,5 @@
-import { Jogo } from '../jogos/Jogo';
-import { Resultado } from '../jogos/Resultado';
-import { Selecao } from '../jogos/Selecao';
+import { Resultado } from './Resultado';
+import { Jogo } from './Jogo';
 
 export interface Aposta {
   id: number;

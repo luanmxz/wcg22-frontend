@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from '../core/interfaces/user';
+import { UserService } from '../user/user-service/user.service';
 
 @Component({
   selector: 'app-bolao',
@@ -7,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./bolao.component.css'],
 })
 export class BolaoComponent implements OnInit {
-  listRodadas: string[] = ['Rodada 1', 'Rodada 2', 'Rodada 3'];
+  currentUser$!: Observable<User>;
+  currentUser!: User;
   listGrupos: string[] = [
     'Grupo A',
     'Grupo B',
@@ -19,7 +22,10 @@ export class BolaoComponent implements OnInit {
     'Grupo H',
   ];
 
-  constructor(private router: Router) {}
+  constructor(private userService: UserService) {
+    this.currentUser$ = this.userService.getUser();
+    this.currentUser$.subscribe((user) => (this.currentUser = user));
+  }
 
   ngOnInit(): void {}
 

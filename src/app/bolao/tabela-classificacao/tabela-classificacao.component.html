@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let selecao of selecoes">
+    <tr *ngFor="let selecao of selecoes | orderBy: order:true">
       <td>{{ selecao.nomeSelecao }}</td>
       <td>{{ selecao.pontos }}</td>
       <td>{{ selecao.jogos }}</td>

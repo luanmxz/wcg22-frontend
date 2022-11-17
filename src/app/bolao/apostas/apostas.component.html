@@ -2,7 +2,7 @@
   <h2>Minhas apostas</h2>
   <table>
     <tr *ngFor="let aposta of apostas">
-      <td>Aposta feita em: {{ aposta.dataDaAposta | date: "dd/MM/yyyy" }}</td>
+      <td>Aposta feita em: {{ aposta.dataDaAposta }}</td>
       <td>
         {{ aposta.idJogo.idTimeA.nomeSelecao }} X
         {{ aposta.idJogo.idTimeB.nomeSelecao }}

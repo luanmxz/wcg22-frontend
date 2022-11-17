@@ -9,7 +9,7 @@
     </button>
   </div>
   <div class="wrapper-for-jogos">
-    <div class="card-for-jogo" *ngFor="let jogo of jogosGrupoA">
+    <div class="card-for-jogo" *ngFor="let jogo of jogos">
       <div class="card-header">
         <h3>{{ jogo.idTimeA.nomeSelecao }}</h3>
         <h3>X</h3>
@@ -19,9 +19,7 @@
         <h4>{{ jogo.dataInicio }}</h4>
         <div class="resultado" *ngIf="jogo.jaAconteceu">
           <h4>Resultado</h4>
-          <h2 *ngIf="jogo.resultado == 'ND'" style="color: green">
-            {{ jogo.idTimeA.nomeSelecao }}
-          </h2>
+          <h2 *ngIf="jogo.resultado == 'ND'" style="color: green">bolas</h2>
           <h2 *ngIf="jogo.resultado == 'B'" style="color: green">
             {{ jogo.idTimeB.nomeSelecao }}
           </h2>
@@ -31,6 +29,7 @@
         <button
           (click)="
             addAposta(
+              currentUser.id,
               jogo.id,
               jogo.idTimeA.nomeSelecao,
               jogo.idTimeB.nomeSelecao
@@ -39,8 +38,12 @@
           type="button"
           class="btn-aposta"
           *ngIf="!jogo.jaAconteceu"
+          [disabled]="jaApostou(jogo.id)"
+          [ngStyle]="
+            jaApostou(jogo.id) ? { cursor: 'default' } : { cursor: 'pointer' }
+          "
         >
-          Apostar
+          {{ jaApostou(jogo.id) ? "Já Apostou" : "Apostar" }}
         </button>
       </div>
     </div>

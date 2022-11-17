@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Jogo } from 'src/app/bolao/jogos/Jogo';
-import { JogosService } from 'src/app/bolao/jogos/jogos.service';
+import { Jogo } from 'src/app/bolao/interfaces/Jogo';
+import { JogosService } from 'src/app/bolao/services/jogos.service';
 import { SetResultJogoDialog } from 'src/app/dialogs/dialog-set-resultado-jogo/set-result-jogo-dialog.component';
 
 @Component({

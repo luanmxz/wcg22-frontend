@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { JogosService } from 'src/app/bolao/jogos/jogos.service';
+import { JogosService } from '../../bolao/services/jogos.service';
 
 @Component({
   selector: 'app-set-result-jogo-dialog',

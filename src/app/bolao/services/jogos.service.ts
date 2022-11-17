@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Jogo } from './Jogo';
+import { Jogo } from '../interfaces/Jogo';
 
 const API = 'http://localhost:8091/api/jogos';
 

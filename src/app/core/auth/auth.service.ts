@@ -38,9 +38,6 @@ export class AuthService {
       .pipe(
         tap((response) => {
           const acess_token = response.access_token;
-          console.log(response);
-          console.log('o token é: ' + acess_token);
-
           this.userService.setToken(acess_token);
         })
       );

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { UserService } from '../user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private userService: UserService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -45,8 +47,8 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls['password'].value
       )
       .subscribe(() => {
-        this.router.navigate(['/bolao']); //.then(() => window.location.reload());
-        console.log('Resposta do back-end: ');
+        this.router.navigateByUrl('/bolao/jogos');
+        //console.log('Resposta do back-end: ');
       }),
       (err: Error) => {
         console.log(err);

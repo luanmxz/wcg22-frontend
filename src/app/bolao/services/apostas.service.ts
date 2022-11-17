@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aposta } from './Aposta';
+import { Aposta } from '../interfaces/Aposta';
 
 @Injectable({
   providedIn: 'root',

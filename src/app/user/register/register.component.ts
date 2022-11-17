@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
           this.registerForm.controls['email'].value
         )
         .subscribe(() => {
-          this.router.navigate(['/bolao']); //.then(() => window.location.reload());
+          this.router.navigateByUrl('login'); //.then(() => window.location.reload());
         }),
         (err: Error) => console.log(`Erro ao realizar o login -> ${err}`);
     }
