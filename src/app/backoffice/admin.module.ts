@@ -9,9 +9,15 @@ import { RouterModule } from '@angular/router';
 import { UsersComponent } from './admin-painel/users/users.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { JogosAdminComponent } from './admin-painel/jogos/jogosadmin.component';
+import { LogsComponent } from './admin-painel/logs/logs.component';
 
 @NgModule({
-  declarations: [AdminPainelComponent, UsersComponent, JogosAdminComponent],
+  declarations: [
+    AdminPainelComponent,
+    UsersComponent,
+    JogosAdminComponent,
+    LogsComponent,
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,

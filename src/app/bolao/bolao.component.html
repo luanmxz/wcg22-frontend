@@ -12,7 +12,7 @@
         <a routerLink="tabela-classificacao">Tabela de Classificação</a>
         <a routerLink="ranking">Ranking</a>
         <a routerLink="minhas-apostas">Minhas apostas</a>
-        <a routerLink="admin-painel" *ngIf="currentUser.admin">Admin</a>
+        <a routerLink="/admin-painel" *ngIf="currentUser.admin">Admin</a>
         <button type="button" (click)="logout()">Sair</button>
       </div>
 
