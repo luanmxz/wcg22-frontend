@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthToken } from 'src/app/core/auth/authToken';
@@ -15,11 +16,13 @@ export class UserService {
     nome: '',
     email: '',
     pontos: 0,
+    admin: false,
   });
 
   constructor(
     private tokenService: TokenService,
-    private userUtilsService: UserUtilsService
+    private userUtilsService: UserUtilsService,
+    private router: Router
   ) {
     this.tokenService.hasToken() && this.decodeAndNotify();
   }
@@ -43,7 +46,14 @@ export class UserService {
 
   logout() {
     this.tokenService.removeToken();
-    this.userSubject.next({ id: 0, nome: '', email: '', pontos: 0 });
+    this.userSubject.next({
+      id: 0,
+      nome: '',
+      email: '',
+      pontos: 0,
+      admin: false,
+    });
+    this.router.navigateByUrl('home');
   }
 
   isLogged() {
@@ -55,13 +65,15 @@ export class UserService {
     const payloadUser = jwt_decode(token!) as AuthToken;
     this.userUtilsService
       .getUserByEmail(payloadUser.user_name)
-      .subscribe((user) =>
+      .subscribe((user) => {
+        console.log('É admin?? R: ' + user.admin);
         this.setUser({
           id: user.id,
           email: user.email,
           pontos: user.pontos,
           nome: user.nome,
-        })
-      );
+          admin: user.admin,
+        });
+      });
   }
 }

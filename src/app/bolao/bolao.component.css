@@ -38,6 +38,19 @@
   background-color: var(--color-1);
   color: var(--color-3);
 }
+
+.user-tabs button {
+  padding: 0.23rem 0.8rem;
+  background-color: var(--color-1);
+  color: var(--color-3);
+  transition: 0.3s ease-in-out;
+}
+
+.user-tabs button:hover {
+  background-color: var(--color-3);
+  color: var(--color-1);
+}
+
 .user-tabs__container {
   display: flex;
   flex-direction: row;

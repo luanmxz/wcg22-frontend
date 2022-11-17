@@ -3,6 +3,5 @@ export interface User {
   nome: string;
   email: string;
   pontos: number;
-  //password: string;
-  //admin: boolean;
+  admin: boolean;
 }

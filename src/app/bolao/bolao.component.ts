@@ -29,7 +29,7 @@ export class BolaoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getUserAdmin() {
-    return false;
+  logout() {
+    this.userService.logout();
   }
 }
