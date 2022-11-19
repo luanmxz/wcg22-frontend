@@ -29,4 +29,38 @@ export class UserUtilsService {
 
     return this.http.get<User[]>(API, httpOptions);
   }
+
+  setNewRole(userId: number, token: string): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      }),
+    };
+
+    return this.http.put<User>(
+      API + `/${userId}/set-new-role`,
+      {
+        id: 2,
+        authority: 'ROLE_ADMIN',
+      },
+      httpOptions
+    );
+  }
+
+  removeRole(userId: number, token: string): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      }),
+    };
+
+    return this.http.put<User>(
+      API + `/${userId}/remove-role`,
+      {
+        id: 2,
+        authority: 'ROLE_ADMIN',
+      },
+      httpOptions
+    );
+  }
 }

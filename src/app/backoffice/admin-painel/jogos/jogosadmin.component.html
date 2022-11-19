@@ -1,19 +1,17 @@
 <table>
-  <thead>
-    <tr>
-      <th>Seleção A</th>
-      <th>Seleção B</th>
-      <th>Data da Partida</th>
-      <th>Vencedor</th>
-    </tr>
-  </thead>
   <tbody>
     <tr *ngFor="let jogo of jogos">
+      <td>{{ jogo.id }}</td>
       <td>{{ jogo.idTimeA.nomeSelecao }}</td>
+      <td>X</td>
       <td>{{ jogo.idTimeB.nomeSelecao }}</td>
       <td>{{ jogo.dataInicio }}</td>
       <td>{{ jogo.resultado }}</td>
       <button
+        [disabled]="jogo.resultado != 'ND'"
+        [ngStyle]="
+          jogo.resultado != 'ND' ? { cursor: 'default' } : { cursor: 'pointer' }
+        "
         (click)="
           update(jogo.id, jogo.idTimeA.nomeSelecao, jogo.idTimeB.nomeSelecao)
         "

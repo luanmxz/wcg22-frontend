@@ -6,7 +6,11 @@ import { JogosComponent } from './jogos/jogos.component';
 import { TabelaClassificacaoComponent } from './tabela-classificacao/tabela-classificacao.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ApostasComponent } from './apostas/apostas.component';
-import { LoginGuard } from '../core/auth/login.guard';
+import { AdminGuard } from '../core/auth/admin.guard';
+import { AdminPainelComponent } from '../backoffice/admin-painel/admin-painel.component';
+import { LogsComponent } from '../backoffice/admin-painel/logs/logs.component';
+import { JogosAdminComponent } from '../backoffice/admin-painel/jogos/jogosadmin.component';
+import { UsersComponent } from '../backoffice/admin-painel/users/users.component';
 
 const routes: Routes = [
   {
@@ -31,7 +35,34 @@ const routes: Routes = [
       {
         path: 'minhas-apostas',
         component: ApostasComponent,
+
         data: { title: 'Minhas apostas' },
+      },
+      {
+        path: 'painel-admin',
+        component: AdminPainelComponent,
+        canActivate: [AdminGuard],
+        data: { title: 'Painel Administrativo' },
+        children: [
+          {
+            path: 'users',
+            component: UsersComponent,
+            canActivate: [AdminGuard],
+            data: { title: 'Admin - Users' },
+          },
+          {
+            path: 'logs',
+            component: LogsComponent,
+            canActivate: [AdminGuard],
+            data: { title: 'Admin - Logs' },
+          },
+          {
+            path: 'jogos',
+            component: JogosAdminComponent,
+            canActivate: [AdminGuard],
+            data: { title: 'Admin - Jogos' },
+          },
+        ],
       },
     ],
   },

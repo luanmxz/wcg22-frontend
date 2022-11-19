@@ -25,7 +25,13 @@ export class SetResultJogoDialog implements OnInit {
     });
   }
 
-  updateJogoById(dados: any) {
-    this.jogosService.updateJogoByID(dados).subscribe();
+  updateJogoById(idJogo: number, dados: any) {
+    const golsA = dados.golsA;
+    const golsB = dados.golsB;
+    const resultado = dados.resultado;
+    const jaAconteceu = true;
+    this.jogosService
+      .updateJogoByID(idJogo, { golsA, golsB, resultado, jaAconteceu })
+      .subscribe();
   }
 }

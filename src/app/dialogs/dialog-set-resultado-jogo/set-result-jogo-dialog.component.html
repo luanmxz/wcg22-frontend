@@ -1,6 +1,6 @@
 <form
   [formGroup]="setResultForm"
-  (ngSubmit)="updateJogoById(setResultForm.value)"
+  (ngSubmit)="updateJogoById(data.idJogo, setResultForm.value)"
 >
   <mat-form-field class="example-form-field" appearance="fill">
     <mat-label>Gols do Time A</mat-label>
@@ -48,28 +48,33 @@
     >
   </mat-form-field>
 
-  <mat-form-field class="example-form-field" appearance="fill">
-    <mat-label>Time vencedor</mat-label>
-    <input matInput type="text" formControlName="resultado" maxlength="30" />
-    <button
-      class="close_button"
-      *ngIf="setResultForm.get('resultado')?.value"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="setResultForm.controls['resultado'].reset()"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <span
-      class="text-muted"
-      *ngIf="
-        setResultForm.get('resultado')?.hasError('required') &&
-        setResultForm.get('resultado')?.touched
-      "
-      >Campo obrigatório.</span
-    >
+  <mat-form-field appearance="fill">
+    <mat-label>Vencedor</mat-label>
+    <select matNativeControl required formControlName="resultado">
+      <option value="A">{{ data.nomeSelecaoA }}</option>
+      <option value="E">EMPATE</option>
+      <option value="B">{{ data.nomeSelecaoB }}</option>
+    </select>
   </mat-form-field>
 
-  <button class="update_button" type="submit">Atualizar</button>
+  <span
+    class="text-muted"
+    *ngIf="
+      setResultForm.get('resultado')?.hasError('required') &&
+      setResultForm.get('resultado')?.touched
+    "
+    >Campo obrigatório.</span
+  >
+
+  <button
+    class="update_button"
+    type="submit"
+    [mat-dialog-close]="true"
+    [disabled]="!setResultForm.valid"
+    [ngStyle]="
+      setResultForm.valid ? {} : { backgroundColor: 'gray', cursor: 'default' }
+    "
+  >
+    Atualizar
+  </button>
 </form>

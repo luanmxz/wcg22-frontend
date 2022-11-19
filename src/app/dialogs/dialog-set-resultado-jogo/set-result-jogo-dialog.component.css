@@ -27,7 +27,7 @@ mat-form-field {
 }
 
 .update_button {
-  width: 30%;
+  width: 80%;
   padding: 1rem;
   border-radius: 0.2rem;
   background-color: var(--color-2);
@@ -36,23 +36,6 @@ mat-form-field {
   font-size: large;
   border: none;
   transition: 1s ease-in-out;
-}
-.update_button:hover {
-  width: 80%;
-}
-
-.back_button {
-  border: none;
-  background-color: white;
-  color: var(--color-main-1);
-  cursor: pointer;
-  margin-left: 1rem;
-  padding-top: 0.5rem;
-  transition: 0.3s ease-in-out;
-  font-weight: bold;
-}
-.back_button:hover {
-  transform: scale(1.2);
 }
 
 span {

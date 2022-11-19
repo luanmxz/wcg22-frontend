@@ -1,64 +1,135 @@
+:host {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  gap: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+aside.menu {
+  position: fixed;
+  grid-column: 1;
+  width: 15%;
+  height: 100%;
+  background: rgb(1, 32, 28);
+  background: -moz-linear-gradient(
+    4deg,
+    rgba(1, 32, 28, 1) 0%,
+    rgba(12, 150, 134, 1) 74%,
+    rgba(26, 227, 203, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    4deg,
+    rgba(1, 32, 28, 1) 0%,
+    rgba(12, 150, 134, 1) 74%,
+    rgba(26, 227, 203, 1) 100%
+  );
+  background: linear-gradient(
+    4deg,
+    rgba(1, 32, 28, 1) 0%,
+    rgba(12, 150, 134, 1) 74%,
+    rgba(26, 227, 203, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#01201c",endColorstr="#1ae3cb",GradientType=1);
+}
+
 .user {
+  grid-column: 2;
   justify-self: center;
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 30px;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid black;
-  background-color: var(--color-2);
-  padding: 1rem;
-}
-
-.avatar {
-  width: 100px;
   height: 100px;
-  align-self: flex-end;
-}
-
-.user-tabs {
-  width: 100%;
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-}
-
-.user-tabs a {
-  background-color: rgba(200, 200, 200, 0.8);
-  border-right: 1px solid var(--color-1);
-  padding: 0.3rem 0.7rem;
-  transition: 0.3s ease-in-out;
-}
-.user-tabs a:last-child {
-  border: none;
-}
-.user-tabs a:hover {
-  background-color: var(--color-1);
-  color: var(--color-3);
-}
-
-.user-tabs button {
-  padding: 0.23rem 0.8rem;
-  background-color: var(--color-1);
-  color: var(--color-3);
-  transition: 0.3s ease-in-out;
-}
-
-.user-tabs button:hover {
-  background-color: var(--color-3);
-  color: var(--color-1);
-}
-
-.user-tabs__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.user-tabs__light-dark-mode {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  border-bottom: 1px solid black;
+  padding: 1rem 1rem 0 1rem;
+  background: rgb(0, 198, 174);
+  background: -moz-linear-gradient(
+    274deg,
+    rgba(0, 198, 174, 1) 0%,
+    rgba(6, 147, 130, 1) 51%,
+    rgba(0, 80, 71, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    274deg,
+    rgba(0, 198, 174, 1) 0%,
+    rgba(6, 147, 130, 1) 51%,
+    rgba(0, 80, 71, 1) 100%
+  );
+  background: linear-gradient(
+    274deg,
+    rgba(0, 198, 174, 1) 0%,
+    rgba(6, 147, 130, 1) 51%,
+    rgba(0, 80, 71, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00c6ae",endColorstr="#005047",GradientType=1);
+}
+
+.menu nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu nav ul li {
+  width: 100%;
+  padding: 0.3rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.menu nav ul li:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.menu nav ul li a {
+  color: var(--color-3);
+  font-weight: bold;
+}
+.user-tabs {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: var(--color-3);
+  font-weight: bold;
+}
+
+div .username {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.username h3 {
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--color-3);
+}
+
+.username button {
+  padding: 0 0.8rem;
+  background-color: var(--color-1);
+  color: var(--color-3);
+  transition: 0.3s ease-in-out;
+  justify-self: flex-end;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  align-self: flex-end;
+  padding-bottom: 0.2rem;
+}
+
+.username button:hover {
+  background-color: var(--color-3);
+  color: var(--color-1);
 }

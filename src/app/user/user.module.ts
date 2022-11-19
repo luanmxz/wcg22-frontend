@@ -8,16 +8,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ConfirmRegisterComponent } from './confirm-register/confirm-register.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-    ConfirmRegisterComponent,
-  ],
+  declarations: [LoginComponent, RegisterComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

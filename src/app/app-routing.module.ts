@@ -1,20 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/auth/auth.guard';
 
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
-import { ConfirmRegisterComponent } from './user/confirm-register/confirm-register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Homepage' },
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Login' },
+  },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Register' },
   },
   {
@@ -34,7 +45,6 @@ const routes: Routes = [
     component: ForgotPasswordComponent,
     data: { title: 'Forgot-password' },
   },
-  { path: 'confirm-register', component: ConfirmRegisterComponent },
   { path: '**', component: NotFoundComponent, data: { title: 'Not-Found' } },
 ];
 

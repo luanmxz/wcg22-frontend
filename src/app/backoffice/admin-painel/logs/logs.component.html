@@ -1,3 +1,16 @@
-<div *ngFor="let log of logs">
-  <p>{{ log.action }}</p>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Nome e id do usuário</th>
+      <th>Detalhes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of logs">
+      <td>{{ log.dateOfAction }}</td>
+      <td>{{ log.usuario.nome }} ({{ log.usuario.id }})</td>
+      <td>{{ log.action }}</td>
+    </tr>
+  </tbody>
+</table>

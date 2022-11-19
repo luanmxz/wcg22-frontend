@@ -1,12 +1,23 @@
 :host {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(10, 10%);
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-p {
-  justify-self: center;
-  align-self: center;
-  grid-column: 1/11;
+table {
+  margin-top: 10px;
+  width: 95%;
+  background-color: var(--color-3);
+}
+
+th {
+  background-color: var(--color-1);
+  color: var(--color-3);
+}
+
+th,
+td {
+  padding: 0.2rem 1rem;
 }

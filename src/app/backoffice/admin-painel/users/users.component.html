@@ -1,3 +1,26 @@
-<div *ngFor="let user of users">
-  <p>{{ user.nome }}</p>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Nome de usuário</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td style="text-align: justify">{{ user.nome }}</td>
+      <td style="text-align: justify">{{ user.email }}</td>
+      <td style="font-weight: bold">{{ user.admin ? "ADMIN" : "USER" }}</td>
+      <td *ngIf="user.admin">
+        <button type="button" style="color: red" (click)="removeAdmin(user.id)">Remover permissão</button>
+      </td>
+      <td *ngIf="!user.admin">
+        <button type="button" (click)="atualizaRole(user.id)">
+          Tornar administrador
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

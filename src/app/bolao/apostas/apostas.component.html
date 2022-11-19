@@ -19,18 +19,18 @@
           aposta.idJogo.idTimeB.nomeSelecao
         }}</span>
       </td>
-      <td *ngIf="aposta.apostouEm == 'E'" style="font-weight: 500">
+      <td *ngIf="aposta.apostouEm == 'E'">
         Apostou em: <span style="font-weight: 500">Empate</span>
       </td>
-      <td *ngIf="aposta.estaAtiva == true" style="font-weight: 500">
+      <td *ngIf="aposta.idJogo.jaAconteceu == false" style="font-weight: 500">
         Resultado: A decidir
       </td>
-      <td *ngIf="aposta.estaAtiva == false" style="font-weight: 500">
+      <td *ngIf="aposta.idJogo.jaAconteceu == true" style="font-weight: 500">
         Resultado: {{ aposta.idJogo.resultado }}
       </td>
       <td
         *ngIf="
-          aposta.estaAtiva == false &&
+          aposta.idJogo.jaAconteceu == true &&
           aposta.apostouEm == aposta.idJogo.resultado
         "
         style="
@@ -43,7 +43,7 @@
       </td>
       <td
         *ngIf="
-          aposta.estaAtiva == false &&
+          aposta.idJogo.jaAconteceu == true &&
           aposta.apostouEm != aposta.idJogo.resultado
         "
         style="background-color: red; color: white; font-weight: bold"
@@ -51,7 +51,7 @@
         Aposta perdida
       </td>
       <td
-        *ngIf="aposta.estaAtiva == true"
+        *ngIf="aposta.idJogo.jaAconteceu == false"
         style="background-color: rgb(229, 229, 14); font-weight: bold"
       >
         Aguardando resultado da partida

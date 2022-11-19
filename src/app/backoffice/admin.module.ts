@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { AdminPainelComponent } from './admin-painel/admin-painel.component';
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from './admin-painel/users/users.component';
-import { AdminRoutingModule } from './admin-routing.module';
 import { JogosAdminComponent } from './admin-painel/jogos/jogosadmin.component';
 import { LogsComponent } from './admin-painel/logs/logs.component';
 
@@ -24,7 +23,6 @@ import { LogsComponent } from './admin-painel/logs/logs.component';
     MatIconModule,
     MatInputModule,
     RouterModule,
-    AdminRoutingModule,
   ],
   exports: [],
 })

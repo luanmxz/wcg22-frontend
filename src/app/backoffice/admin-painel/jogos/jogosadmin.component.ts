@@ -39,6 +39,5 @@ export class JogosAdminComponent implements OnInit {
         maxHeight: '80%',
       })
       .afterClosed();
-    //.subscribe(() => this.router.navigateByUrl('bolao/jogos'));
   }
 }

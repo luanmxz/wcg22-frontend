@@ -1,51 +1,51 @@
-<div class="container">
-  <div class="wrapper-for-grupos">
-    <button
-      class="btn-grupos"
-      *ngFor="let grupo of grupos"
-      (click)="changeGroup(grupo.id)"
-    >
-      Grupo {{ grupo.nomeGrupo }}
-    </button>
-  </div>
-  <div class="wrapper-for-jogos">
-    <div class="card-for-jogo" *ngFor="let jogo of jogos">
-      <div class="card-header">
-        <h3>{{ jogo.idTimeA.nomeSelecao }}</h3>
-        <h3>X</h3>
-        <h3>{{ jogo.idTimeB.nomeSelecao }}</h3>
+<div class="wrapper-for-grupos">
+  <button
+    class="btn-grupos"
+    *ngFor="let grupo of grupos"
+    (click)="changeGroup(grupo.id)"
+  >
+    Grupo {{ grupo.nomeGrupo }}
+  </button>
+</div>
+<div class="wrapper-for-jogos">
+  <div class="card-for-jogo" *ngFor="let jogo of jogos">
+    <div class="card-header">
+      <h3>{{ jogo.idTimeA.nomeSelecao }}</h3>
+      <h3>X</h3>
+      <h3>{{ jogo.idTimeB.nomeSelecao }}</h3>
+    </div>
+    <div class="card-body">
+      <h5>{{ jogo.dataInicio }}</h5>
+      <div class="resultado" *ngIf="jogo.jaAconteceu">
+        <h4>Resultado</h4>
+        <h2 *ngIf="jogo.resultado == 'A'" style="color: ivory">
+          {{ jogo.idTimeA.nomeSelecao }}
+        </h2>
+        <h2 *ngIf="jogo.resultado == 'B'" style="color: ivory">
+          {{ jogo.idTimeB.nomeSelecao }}
+        </h2>
+        <h2 *ngIf="jogo.resultado == 'E'" style="color: yellow">EMPATE</h2>
+        <h4>{{ jogo.golsA }} x {{ jogo.golsB }}</h4>
       </div>
-      <div class="card-body">
-        <h4>{{ jogo.dataInicio }}</h4>
-        <div class="resultado" *ngIf="jogo.jaAconteceu">
-          <h4>Resultado</h4>
-          <h2 *ngIf="jogo.resultado == 'ND'" style="color: green">bolas</h2>
-          <h2 *ngIf="jogo.resultado == 'B'" style="color: green">
-            {{ jogo.idTimeB.nomeSelecao }}
-          </h2>
-          <h2 *ngIf="jogo.resultado == 'E'" style="color: yellow">EMPATE</h2>
-          <h4>{{ jogo.golsA }} x {{ jogo.golsB }}</h4>
-        </div>
-        <button
-          (click)="
-            addAposta(
-              currentUser.id,
-              jogo.id,
-              jogo.idTimeA.nomeSelecao,
-              jogo.idTimeB.nomeSelecao
-            )
-          "
-          type="button"
-          class="btn-aposta"
-          *ngIf="!jogo.jaAconteceu"
-          [disabled]="jaApostou(jogo.id)"
-          [ngStyle]="
-            jaApostou(jogo.id) ? { cursor: 'default' } : { cursor: 'pointer' }
-          "
-        >
-          {{ jaApostou(jogo.id) ? "Já Apostou" : "Apostar" }}
-        </button>
-      </div>
+      <button
+        (click)="
+          addAposta(
+            currentUser.id,
+            jogo.id,
+            jogo.idTimeA.nomeSelecao,
+            jogo.idTimeB.nomeSelecao
+          )
+        "
+        type="button"
+        class="btn-aposta"
+        *ngIf="!jogo.jaAconteceu"
+        [disabled]="jaApostou(jogo.id)"
+        [ngStyle]="
+          jaApostou(jogo.id) ? { cursor: 'default' } : { cursor: 'pointer' }
+        "
+      >
+        {{ jaApostou(jogo.id) ? "Já Apostou" : "Apostar" }}
+      </button>
     </div>
   </div>
 </div>

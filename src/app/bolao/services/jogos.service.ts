@@ -19,7 +19,7 @@ export class JogosService {
     return this.http.get<Jogo[]>(API + `/group/${groupId}`);
   }
 
-  updateJogoByID(dados: any): Observable<any> {
-    return this.http.put<any>(API + `${dados}`, dados);
+  updateJogoByID(idJogo: number, dados: any): Observable<any> {
+    return this.http.put<any>(API + `/${idJogo}`, dados);
   }
 }
