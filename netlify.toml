@@ -1,6 +1,6 @@
 [build]
-  publish = "dist/anglify"
-  command = "ng build --prod"
+  publish = "dist/wcg-project"
+  command = "CI= npm run build"
 [[redirects]]
   from = "/*"
   to = "/index.html"
