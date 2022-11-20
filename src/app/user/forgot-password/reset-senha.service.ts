@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-const API = 'http://localhost:8091/recovery-password';
+const API = 'https://app-wcg22.herokuapp.com/recovery-password';
 
 @Injectable({
   providedIn: 'root',

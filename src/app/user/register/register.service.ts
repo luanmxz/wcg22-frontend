@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const API = 'http://localhost:8091/api/usuarios';
+const API = 'https://app-wcg22.herokuapp.com/api/usuarios';
 
 @Injectable({
   providedIn: 'root',

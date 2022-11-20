@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { UserService } from 'src/app/user/user-service/user.service';
 import { Log } from './Log';
 
-const API = 'http://localhost:8091/api/logs';
+const API = 'https://app-wcg22.herokuapp.com/api/logs';
 
 @Injectable({
   providedIn: 'root',

@@ -7,7 +7,7 @@ import { Aposta } from '../interfaces/Aposta';
   providedIn: 'root',
 })
 export class ApostaService {
-  private url: string = 'http://localhost:8091/api/apostas';
+  private url: string = 'https://app-wcg22.herokuapp.com/api/apostas';
 
   constructor(private http: HttpClient) {}
 

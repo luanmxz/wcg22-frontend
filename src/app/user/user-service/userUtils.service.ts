@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/core/interfaces/user';
 import { UserRanking } from './UserRanking';
 
-const API = 'http://localhost:8091/api/usuarios';
+const API = 'https://app-wcg22.herokuapp.com/api/usuarios';
 
 @Injectable({
   providedIn: 'root',

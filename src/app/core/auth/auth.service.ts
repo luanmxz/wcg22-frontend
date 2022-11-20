@@ -12,7 +12,7 @@ export class AuthService {
 
   //realizar a requisição
   userAuthenticate(userName: string, password: string) {
-    let oauth2_token_endpoint = 'http://localhost:8091/oauth/token';
+    let oauth2_token_endpoint = 'https://app-wcg22.herokuapp.com/oauth/token';
     let oauth2_client_id = 'wcg22';
     let oauth2_client_secret = 'wcg22secret';
 

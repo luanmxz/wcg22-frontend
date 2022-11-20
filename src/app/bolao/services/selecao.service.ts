@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Selecao } from '../interfaces/Selecao';
 
-const API = 'http://localhost:8091/api/selecoes/';
+const API = 'https://app-wcg22.herokuapp.com/api/selecoes/';
 
 @Injectable({
   providedIn: 'root',
