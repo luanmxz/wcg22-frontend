@@ -71,12 +71,15 @@ export class RegisterComponent implements OnInit {
           );
           this.router.navigateByUrl('login');
         }),
-        (err: Error) => console.log(err);
-      this.notificationService.error(
-        'ERRO',
-        'Não foi possível criar a conta, tente novamente!'
-      );
-      this.registerForm.reset();
+        (err: Response) => {
+          if (err.status == 400) {
+            this.notificationService.error(
+              'ERRO',
+              'Não foi possível criar a conta, tente novamente!'
+            );
+          }
+          this.registerForm.reset();
+        };
     }
   }
 }
