@@ -29,22 +29,30 @@ export class UsersComponent implements OnInit {
   atualizaRole(userId: number) {
     this.userUtilService
       .setNewRole(userId, this.userService.getToken()!)
-      .subscribe((response) =>
+      .subscribe((response) => {
         this.notificationService.success(
           'SUCESSO',
           'Permissão concedida com sucesso!'
-        )
-      );
+        ),
+          (this.users$ = this.userUtilService.findAllUsers(
+            this.userService.getToken()!
+          ));
+        this.users$.subscribe((users: User[]) => (this.users = users));
+      });
   }
 
   removeAdmin(userId: number) {
     this.userUtilService
       .removeRole(userId, this.userService.getToken()!)
-      .subscribe((response) =>
+      .subscribe((response) => {
         this.notificationService.success(
           'SUCESSO',
           'Permissão removida com sucesso!'
-        )
-      );
+        ),
+          (this.users$ = this.userUtilService.findAllUsers(
+            this.userService.getToken()!
+          ));
+        this.users$.subscribe((users: User[]) => (this.users = users));
+      });
   }
 }
