@@ -7,11 +7,12 @@
 table {
   display: block;
   justify-self: center;
-  align-self: center;
+  align-self: flex-start;
   text-align: center;
   background-color: var(--color-3);
   border-radius: 10px;
   overflow: auto;
+  margin-top: 1rem;
 }
 
 table th,
