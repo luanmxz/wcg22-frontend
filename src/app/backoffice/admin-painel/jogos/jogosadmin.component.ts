@@ -23,7 +23,6 @@ export class JogosAdminComponent implements OnInit {
     this.jogosService
       .findAllJogos()
       .subscribe((jogos: Jogo[]) => jogos.forEach((j) => this.jogos.push(j)));
-    console.log(this.jogos);
   }
 
   update(idJogo: number, nomeSelecaoA: String, nomeSelecaoB: String) {

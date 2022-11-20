@@ -55,10 +55,11 @@ export class LoginComponent implements OnInit {
           );
           this.router.navigateByUrl('/bolao/jogos');
         },
-        error: (err: Error) => {
-          console.log(err);
+        error: (err: Response) => {
+          if (err.status == 400) {
+            this.notificationService.error('ERRO', 'Email ou senha inválida!');
+          }
           this.loginForm.reset();
-          this.notificationService.error('ERRO', 'Email ou senha inválida!');
         },
       });
   }

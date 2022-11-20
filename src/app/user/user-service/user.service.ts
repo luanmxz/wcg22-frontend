@@ -66,7 +66,6 @@ export class UserService {
     this.userUtilsService
       .getUserByEmail(payloadUser.user_name)
       .subscribe((user) => {
-        console.log('É admin?? R: ' + user.admin);
         this.setUser({
           id: user.id,
           email: user.email,
