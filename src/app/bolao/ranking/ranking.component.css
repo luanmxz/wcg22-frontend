@@ -4,17 +4,18 @@
 }
 
 table {
+  display: block;
   justify-self: center;
   align-self: center;
-  width: 60%;
   text-align: center;
   background-color: var(--color-3);
   border-radius: 10px;
+  overflow: auto;
 }
 
 table th,
 td {
-  padding: 1rem 2rem;
+  padding: 1rem 5rem;
   border-bottom: 2px double black;
 }
 table th {
@@ -32,4 +33,21 @@ table td {
 }
 table td:last-child {
   border-right: none;
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  table {
+    margin-left: 1rem;
+  }
+
+  table th,
+  td {
+    padding: 0.5rem 1rem;
+    border-bottom: 2px double black;
+  }
 }

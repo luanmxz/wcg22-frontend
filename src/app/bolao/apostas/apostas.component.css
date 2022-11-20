@@ -1,9 +1,12 @@
 :host {
   grid-column: 2;
   display: grid;
+  min-height: 100vh;
 }
 
 h2 {
+  margin-top: 1rem;
+  justify-self: center;
   color: var(--color-2);
 }
 
@@ -14,9 +17,13 @@ h2 {
   justify-content: center;
   align-content: center;
   text-align: center;
+  overflow: auto;
 }
 
 table {
+  width: 90%;
+  justify-self: center;
+  align-self: center;
   margin: 0.5%;
   margin-bottom: 1%;
 }
@@ -26,4 +33,32 @@ table tr td {
   text-align: center;
   background-color: var(--color-2);
   border: 1px solid white;
+}
+
+img.brasao-flag {
+  width: 30px;
+  height: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  table {
+    margin-left: 1rem;
+    justify-self: flex-start;
+    align-self: flex-start;
+  }
+
+  td {
+    min-width: 180px;
+  }
+
+  table th,
+  td {
+    padding: initial;
+    border-bottom: 1px solid black;
+  }
 }

@@ -2,23 +2,34 @@
   <tbody>
     <tr *ngFor="let jogo of jogos">
       <td>{{ jogo.id }}</td>
-      <td>{{ jogo.idTimeA.nomeSelecao }}</td>
+      <td><img src="{{ jogo.idTimeA.brasao }}" class="brasao-flag" /></td>
       <td>X</td>
-      <td>{{ jogo.idTimeB.nomeSelecao }}</td>
+      <td><img src="{{ jogo.idTimeB.brasao }}" class="brasao-flag" /></td>
       <td>{{ jogo.dataInicio }}</td>
-      <td>{{ jogo.resultado }}</td>
-      <button
-        [disabled]="jogo.resultado != 'ND'"
-        [ngStyle]="
-          jogo.resultado != 'ND' ? { cursor: 'default' } : { cursor: 'pointer' }
-        "
-        (click)="
-          update(jogo.id, jogo.idTimeA.nomeSelecao, jogo.idTimeB.nomeSelecao)
-        "
-        class="btn-update-jogo"
-      >
-        Alterar resultado
-      </button>
+      <td *ngIf="jogo.resultado == 'A'">
+        <img src="{{ jogo.idTimeA.brasao }}" class="brasao-flag" />
+      </td>
+      <td *ngIf="jogo.resultado == 'B'">
+        <img src="{{ jogo.idTimeB.brasao }}" class="brasao-flag" />
+      </td>
+      <td *ngIf="jogo.resultado == 'E'">Empate</td>
+      <td *ngIf="jogo.resultado == 'ND'">A decidir</td>
+      <td>
+        <button
+          [disabled]="jogo.resultado != 'ND'"
+          [ngStyle]="
+            jogo.resultado != 'ND'
+              ? { cursor: 'default' }
+              : { cursor: 'pointer' }
+          "
+          (click)="
+            update(jogo.id, jogo.idTimeA.nomeSelecao, jogo.idTimeB.nomeSelecao)
+          "
+          class="btn-update-jogo"
+        >
+          Alterar resultado
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

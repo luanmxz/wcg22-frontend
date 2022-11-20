@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ApostasComponent } from './apostas/apostas.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { OrderModule } from 'ngx-order-pipe';
     MatIconModule,
     MatSlideToggleModule,
     OrderModule,
+    MatSelectModule,
+    ReactiveFormsModule,
   ],
 })
 export class BolaoModule {}

@@ -1,29 +1,29 @@
 <aside class="menu">
   <nav>
-    <ul class="user-tabs">
+    <ul class="menu-list">
       <li routerLink="jogos">
         <i class="fa-regular fa-futbol fa-2x"></i>
-        Jogos
+        <p>Jogos</p>
       </li>
       <li routerLink="tabela-classificacao">
         <i class="fa-solid fa-ranking-star fa-2x"></i>
-        Classificação
+        <p>Classificação</p>
       </li>
       <li routerLink="ranking">
         <i class="fa-solid fa-medal fa-2x"></i>
-        Ranking
+        <p>Ranking</p>
       </li>
       <li routerLink="minhas-apostas">
         <i class="fa-solid fa-dice-d6 fa-2x"></i>
-        Minhas apostas
+        <p>Minhas apostas</p>
       </li>
       <li routerLink="painel-admin/jogos" *ngIf="currentUser.admin">
         <i class="fa-solid fa-screwdriver-wrench fa-2x"></i>
-        Admin
+        <p>Admin</p>
       </li>
       <li (click)="logout()">
         <i class="fa-solid fa-right-from-bracket fa-2x"></i>
-        Sair
+        <p>Sair</p>
       </li>
     </ul>
   </nav>
@@ -33,18 +33,11 @@
   <div class="username">
     <h6>Meus pontos: {{ currentUser.pontos }}</h6>
     <h3>{{ currentUser.nome }}</h3>
-    <!-- <div class="user-tabs__light-dark-mode">
-      <mat-icon>wb_sunny</mat-icon>
-      <mat-slide-toggle value="warn"></mat-slide-toggle>
-      <mat-icon>brightness_3</mat-icon>
-    </div>
-    <button type="button" (click)="logout()">Sair</button> -->
     <img
       src="../../assets/undraw-male-avatar.svg"
       alt="male-avatar"
       class="avatar"
     />
-    <mat-icon>settings</mat-icon>
   </div>
 </div>
 

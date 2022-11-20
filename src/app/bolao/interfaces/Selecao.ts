@@ -10,4 +10,5 @@ export interface Selecao {
   empates: number;
   jogos: number;
   gols: number;
+  brasao: string;
 }

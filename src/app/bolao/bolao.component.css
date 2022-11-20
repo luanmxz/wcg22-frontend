@@ -1,15 +1,36 @@
 :host {
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 15% 1fr;
   gap: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: rgb(0, 3, 2);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(0, 3, 2, 0.95) 71%,
+    rgba(45, 4, 21, 1) 88%,
+    rgba(68, 6, 26, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(0, 3, 2, 0.95) 71%,
+    rgba(45, 4, 21, 1) 88%,
+    rgba(68, 6, 26, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(0, 3, 2, 0.95) 71%,
+    rgba(45, 4, 21, 1) 88%,
+    rgba(68, 6, 26, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000302",endColorstr="#44061a",GradientType=1);
 }
 
 aside.menu {
   position: fixed;
   grid-column: 1;
+  z-index: 999;
   width: 15%;
   height: 100%;
+  border-right: 1px solid white;
   background: rgb(1, 32, 28);
   background: -moz-linear-gradient(
     4deg,
@@ -40,7 +61,7 @@ aside.menu {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 0.5px solid whitesmoke;
   padding: 1rem 1rem 0 1rem;
   background: rgb(0, 198, 174);
   background: -moz-linear-gradient(
@@ -70,16 +91,17 @@ aside.menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1.4rem 0 0.5rem 0;
 }
 
 .menu nav ul li {
   width: 100%;
-  padding: 0.3rem 0;
+  padding: 1rem 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
 }
 .menu nav ul li:hover {
   background-color: rgba(255, 255, 255, 0.4);
@@ -88,13 +110,14 @@ aside.menu {
   color: var(--color-3);
   font-weight: bold;
 }
-.user-tabs {
+.menu-list {
   padding: 0;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   color: var(--color-3);
   font-weight: bold;
 }
@@ -132,4 +155,62 @@ div .username {
 .username button:hover {
   background-color: var(--color-3);
   color: var(--color-1);
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    grid-template-columns: 100%;
+    grid-template-rows: 100px max-content 100px;
+  }
+
+  .user {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  aside.menu {
+    grid-row: 3;
+    position: fixed;
+    bottom: 0;
+    grid-column: 1;
+    width: 100%;
+    height: 100px;
+    z-index: 2;
+    border-top: 2px solid var(--color-3);
+  }
+
+  .menu nav {
+    flex-direction: row;
+  }
+
+  .menu nav ul li {
+    height: initial;
+    padding: 0.3rem 0;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu nav ul li {
+    width: 100%;
+    padding: 0.3rem 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .menu nav ul li p {
+    display: none;
+  }
+
+  .menu-list {
+    height: initial;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

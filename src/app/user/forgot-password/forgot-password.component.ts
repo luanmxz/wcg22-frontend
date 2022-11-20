@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/notification/notification.service';
 import { emailService } from './reset-senha.service';
 
 @Component({
@@ -10,7 +12,11 @@ import { emailService } from './reset-senha.service';
 export class ForgotPasswordComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private emailService: emailService) {}
+  constructor(
+    private emailService: emailService,
+    private notificationService: NotificationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -23,10 +29,16 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   resetSenha() {
-    this.emailService
-      .sendToken(this.email.value)
-      .subscribe(() =>
-        alert('Token para redefinição de senha enviado ao seu email!')
-      );
+    this.emailService.sendToken(this.email.value).subscribe({
+      next: () => {
+        this.notificationService.success(
+          'SUCESSO',
+          'Token para redefinição de senha enviado ao seu email!'
+        ),
+          this.router.navigateByUrl('change-password');
+      },
+      error: (err: Error) =>
+        this.notificationService.error('ERRO!', 'Tente novamente!'),
+    });
   }
 }

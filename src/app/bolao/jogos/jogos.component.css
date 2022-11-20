@@ -1,22 +1,35 @@
 :host {
   grid-column: 2;
-  padding-top: 1.5rem;
+  min-height: 100vh;
+  padding-top: 1rem;
+}
+:host ::ng-deep .mat-form-field-wrapper {
+  margin: 0 !important;
+  padding-bottom: 0.25em;
+  background-color: aliceblue;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
 }
 
-.wrapper-for-grupos {
+div.wrapper-for-grupos {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-self: center;
-  justify-self: center;
+  overflow-x: auto;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   padding-bottom: 20px;
 }
 
-.btn-grupos {
-  width: 120px;
+button.btn-grupos {
+  min-width: 120px;
+  min-height: 50px;
   color: whitesmoke;
   font-weight: bold;
   padding: 10px;
+  border: 0.6px solid var(--color-3);
   border-radius: 5px;
   background: rgb(0, 198, 174);
   background: -moz-linear-gradient(
@@ -40,7 +53,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00c6ae",endColorstr="#017d6e",GradientType=1);
 }
 
-.wrapper-for-jogos {
+div.wrapper-for-jogos {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -50,54 +63,102 @@
   padding-bottom: 10px;
 }
 
-.card-for-jogo {
+div.card-for-jogo {
   width: 320px;
   height: 460px;
+  border: 0.6px solid var(--color-3);
   border-radius: 20px;
   display: grid;
-  grid-template-rows: 35% 65%;
+  overflow: hidden;
+  grid-template-rows: 35% 75%;
   color: var(--color-3);
-  background: rgb(0, 198, 174);
+  background: rgb(1, 32, 28);
   background: -moz-linear-gradient(
-    0deg,
-    rgba(0, 198, 174, 1) 0%,
-    rgba(6, 147, 130, 1) 51%,
-    rgba(0, 80, 71, 1) 100%
+    4deg,
+    rgba(1, 32, 28, 1) 0%,
+    rgba(12, 150, 134, 1) 74%,
+    rgba(26, 227, 203, 1) 100%
   );
   background: -webkit-linear-gradient(
-    0deg,
-    rgba(0, 198, 174, 1) 0%,
-    rgba(6, 147, 130, 1) 51%,
-    rgba(0, 80, 71, 1) 100%
+    4deg,
+    rgba(1, 32, 28, 1) 0%,
+    rgba(12, 150, 134, 1) 74%,
+    rgba(26, 227, 203, 1) 100%
   );
   background: linear-gradient(
-    0deg,
-    rgba(0, 198, 174, 1) 0%,
-    rgba(6, 147, 130, 1) 51%,
-    rgba(0, 80, 71, 1) 100%
+    4deg,
+    rgba(1, 32, 28, 1) 0%,
+    rgba(12, 150, 134, 1) 74%,
+    rgba(26, 227, 203, 1) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00c6ae",endColorstr="#005047",GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#01201c",endColorstr="#1ae3cb",GradientType=1);
 }
 
-.card-header {
+div.card-header {
   grid-row: 1;
   display: grid;
   grid-template-columns: 45% 10% 45%;
+  align-items: center;
+  justify-content: center;
+}
+div.card-header__wrapper {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  text-overflow: ellipsis;
+  white-space: pre-line;
 }
 
-.card-body {
+img.brasao-flag {
+  width: 60px;
+  height: 40px;
+  border: 1px solid white;
+}
+
+div.card-body {
   grid-row: 2;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+div.card-body__content {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  z-index: 1;
 }
 
-.btn-aposta {
+form {
+  width: 100%;
+  margin-top: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+img.card-body__bg {
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  user-select: none;
+}
+
+button.btn-aposta {
   width: 90%;
   padding: 1rem;
   background-color: white;
@@ -107,14 +168,23 @@
   -moz-box-shadow: 0px 0px 29px 7px rgba(0, 198, 174, 0.34);
   box-shadow: 0px 0px 29px 7px rgba(0, 198, 174, 0.34);
 }
-.btn-aposta:hover {
-  transform: scale(1.03);
-  box-shadow: none;
-}
 
-.resultado {
+div.resultado {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+@media screen and (max-width: 1170px) {
+  div.wrapper-for-grupos {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }

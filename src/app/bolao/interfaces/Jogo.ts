@@ -4,28 +4,8 @@ import { Grupo } from './Grupo';
 
 export interface Jogo {
   id: number;
-  idTimeA: Selecao; /*{
-    id: number;
-    nomeSelecao: String;
-    grupo: Grupo;
-    pontos: number;
-    vitorias: number;
-    derrotas: number;
-    empates: number;
-    jogos: number;
-    gols: number;
-  };*/
-  idTimeB: {
-    id: number;
-    nomeSelecao: String;
-    grupo: Grupo;
-    pontos: number;
-    vitorias: number;
-    derrotas: number;
-    empates: number;
-    jogos: number;
-    gols: number;
-  };
+  idTimeA: Selecao;
+  idTimeB: Selecao;
   golsA: number;
   golsB: number;
   dataInicio: Date;

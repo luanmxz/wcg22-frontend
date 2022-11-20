@@ -4,7 +4,10 @@
 }
 
 table {
-  margin-top: 0.5rem;
+  display: block;
+  width: 90%;
+  overflow-x: auto;
+  margin-top: 1rem;
   justify-self: center;
   align-self: center;
   background-color: var(--color-3);
@@ -14,7 +17,8 @@ table {
 table th,
 td {
   padding: 1rem 2rem;
-  border-bottom: 2px double black;
+  border-bottom: 1px solid black;
+  text-align: center;
 }
 table th {
   background-color: var(--color-2);
@@ -26,6 +30,32 @@ table th:last-child {
   border-top-right-radius: 10px;
 }
 table td {
-  border-right: 3px double black;
+  border-right: 1px solid black;
   text-align: center;
+}
+table td:first-child {
+  text-align: justify;
+}
+
+img.brasao-flag {
+  width: 60px;
+  height: 40px;
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  table {
+    margin-left: 1rem;
+  }
+
+  table th,
+  td {
+    padding: 0.5rem 0.7rem;
+    overflow: auto;
+  }
 }

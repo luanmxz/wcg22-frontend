@@ -1,32 +1,37 @@
+<h2>Minhas apostas</h2>
 <div class="my-gambles mt-3">
-  <h2>Minhas apostas</h2>
   <table>
     <tr *ngFor="let aposta of apostas">
-      <td>Aposta feita em: {{ aposta.dataDaAposta }}</td>
+      <td>Feita em: {{ aposta.dataDaAposta }}</td>
       <td>
-        {{ aposta.idJogo.idTimeA.nomeSelecao }} X
-        {{ aposta.idJogo.idTimeB.nomeSelecao }}
+        <img src="{{ aposta.idJogo.idTimeA.brasao }}" class="brasao-flag" />
+        X
+        <img src="{{ aposta.idJogo.idTimeB.brasao }}" class="brasao-flag" />
       </td>
       <td *ngIf="aposta.apostouEm == 'A'">
         Apostou em:
-        <span style="font-weight: 500">{{
-          aposta.idJogo.idTimeA.nomeSelecao
-        }}</span>
+        <img src="{{ aposta.idJogo.idTimeA.brasao }}" class="brasao-flag" />
       </td>
       <td *ngIf="aposta.apostouEm == 'B'">
         Apostou em:
-        <span style="font-weight: 500">{{
-          aposta.idJogo.idTimeB.nomeSelecao
-        }}</span>
+        <img src="{{ aposta.idJogo.idTimeB.brasao }}" class="brasao-flag" />
       </td>
       <td *ngIf="aposta.apostouEm == 'E'">
         Apostou em: <span style="font-weight: 500">Empate</span>
       </td>
-      <td *ngIf="aposta.idJogo.jaAconteceu == false" style="font-weight: 500">
+      <td *ngIf="aposta.idJogo.resultado == 'ND'" style="font-weight: 500">
         Resultado: A decidir
       </td>
-      <td *ngIf="aposta.idJogo.jaAconteceu == true" style="font-weight: 500">
-        Resultado: {{ aposta.idJogo.resultado }}
+      <td *ngIf="aposta.idJogo.resultado == 'A'" style="font-weight: 500">
+        Resultado:
+        <img src="{{ aposta.idJogo.idTimeA.brasao }}" class="brasao-flag" />
+      </td>
+      <td *ngIf="aposta.idJogo.resultado == 'B'" style="font-weight: 500">
+        Resultado:
+        <img src="{{ aposta.idJogo.idTimeB.brasao }}" class="brasao-flag" />
+      </td>
+      <td *ngIf="aposta.idJogo.resultado == 'E'" style="font-weight: 500">
+        Resultado: Empate
       </td>
       <td
         *ngIf="

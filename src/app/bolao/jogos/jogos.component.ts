@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { NewApostaDialogComponent } from 'src/app/dialogs/new-aposta-dialog.component';
 import { Grupo } from '../interfaces/Grupo';
 import { GrupoService } from '../services/grupos.service';
 import { Jogo } from '../interfaces/Jogo';
 import { JogosService } from '../services/jogos.service';
 import { User } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/user/user-service/user.service';
-import { filter } from 'rxjs';
 import { ApostaService } from '../services/apostas.service';
 import { Aposta } from '../interfaces/Aposta';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from 'src/app/notification/notification.service';
 
 @Component({
   selector: 'app-jogos',
@@ -17,17 +16,19 @@ import { Aposta } from '../interfaces/Aposta';
   styleUrls: ['./jogos.component.css'],
 })
 export class JogosComponent implements OnInit {
+  novaApostaForm!: FormGroup;
   grupos: Grupo[] = [];
   jogos: Jogo[] = [];
   currentUser!: User;
   jogosQueJaApostou: Aposta[] = [];
 
   constructor(
-    private dialog: MatDialog,
     private gruposService: GrupoService,
     private jogosService: JogosService,
     private userService: UserService,
-    private apostasService: ApostaService
+    private apostasService: ApostaService,
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService
   ) {
     this.userService.getUser().subscribe((user) => {
       this.getApostasByUser(user.id), (this.currentUser = user);
@@ -44,32 +45,10 @@ export class JogosComponent implements OnInit {
       .subscribe((grupos: Grupo[]) =>
         grupos.forEach((grupo) => this.grupos.push(grupo))
       );
-  }
 
-  addAposta(
-    idUser: number,
-    idJogo: number,
-    nomeSelecaoA: String,
-    nomeSelecaoB: String
-  ) {
-    this.dialog
-      .open(NewApostaDialogComponent, {
-        data: {
-          idUser: idUser,
-          idJogo: idJogo,
-          nomeSelecaoA: nomeSelecaoA,
-          nomeSelecaoB: nomeSelecaoB,
-        },
-        maxWidth: '100%',
-        minWidth: '60%',
-        maxHeight: '80%',
-      })
-      .afterClosed()
-      .subscribe({
-        next: () => this.getApostasByUser(idUser),
-        error: (err: Error) =>
-          alert('Não permitido! Você já apostou nesse jogo!'),
-      });
+    this.novaApostaForm = this.formBuilder.group({
+      apostouEm: ['', Validators.required],
+    });
   }
 
   getApostasByUser(idUser: number) {
@@ -88,5 +67,25 @@ export class JogosComponent implements OnInit {
     this.jogosService
       .findAllJogosByGroupID(id)
       .subscribe((jogos: Jogo[]) => (this.jogos = jogos));
+  }
+
+  save(data: any, idJogo: number) {
+    this.apostasService
+      .createAposta(data, this.currentUser.id, idJogo)
+      .subscribe({
+        next: () => {
+          this.notificationService.success(
+            'Sucesso',
+            'Aposta realizada com sucesso'
+          ),
+            this.getApostasByUser(this.currentUser.id);
+        },
+        error: (err: Error) => {
+          this.notificationService.error(
+            'Erro!',
+            'Não foi possível confirmar a aposta, tente novamente!'
+          );
+        },
+      });
   }
 }

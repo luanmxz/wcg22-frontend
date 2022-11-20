@@ -1,33 +1,47 @@
 :host {
   grid-column: 2;
   padding-bottom: 1%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 100%;
 }
 
 table {
+  display: block;
+  width: 70%;
   margin-top: 1rem;
-  grid-column: 2/10;
-  height: 100px;
   text-align: center;
   background-color: var(--color-3);
+  overflow-x: auto;
+  justify-self: center;
 }
 
 td {
   padding: 1rem 2rem;
-  border-bottom: 2px double black;
+  border-bottom: 1px solid black;
 }
 
 table td {
-  border-right: 3px double black;
-  border-left: 3px double black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
   text-align: center;
 }
 
-.btn-update-jogo {
-  width: 100%;
-  height: 100%;
+table td:last-child {
   background-color: var(--color-2);
-  border: 0.1px solid whitesmoke;
+}
+.btn-update-jogo {
+  padding: 0.5rem;
+}
+
+img.brasao-flag {
+  width: 40px;
+  height: 30px;
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }

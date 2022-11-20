@@ -63,4 +63,11 @@ export class UserUtilsService {
       httpOptions
     );
   }
+
+  changePassword(novaSenha: string, token: string): Observable<User> {
+    return this.http.put<User>(API + '/new-password', {
+      novaSenha,
+      token,
+    });
+  }
 }
