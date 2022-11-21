@@ -20,9 +20,6 @@ export class AuthService {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
         Accept: 'application/x-www-form-urlencoded',
-        Origin: 'https://https://wcg22.netlify.app/',
-        'Acess-Control-Allow-Headers':
-          'Origin, Content-Type, Accept, Authorization',
         Authorization:
           'Basic ' + btoa(oauth2_client_id + ':' + oauth2_client_secret),
       }),
