@@ -21,7 +21,6 @@ export class AuthService {
         'Content-Type': 'application/x-www-form-urlencoded',
         Accept: 'application/x-www-form-urlencoded',
         Origin: 'https://https://wcg22.netlify.app/',
-        'Access-Control-Allow-Origin': '*',
         Authorization:
           'Basic ' + btoa(oauth2_client_id + ':' + oauth2_client_secret),
       }),
