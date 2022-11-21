@@ -21,6 +21,9 @@ export class AuthService {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization:
           'Basic ' + btoa(oauth2_client_id + ':' + oauth2_client_secret),
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, PUT, POST',
+        'Access-Control-Allow-Origin': '*',
       }),
     };
 
