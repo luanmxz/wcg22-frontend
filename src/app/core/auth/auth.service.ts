@@ -19,9 +19,9 @@ export class AuthService {
     const httpOtions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, PUT, POST, OPTIONS',
-        'Access-Control-Allow-Origin': 'https://wcg22.netlify.app/',
+        Accept: 'application/x-www-form-urlencoded',
+        Origin: 'https://https://wcg22.netlify.app/',
+        'Access-Control-Allow-Origin': '*',
         Authorization:
           'Basic ' + btoa(oauth2_client_id + ':' + oauth2_client_secret),
       }),
@@ -33,7 +33,6 @@ export class AuthService {
         .replace('{1}', oauth2_client_secret)
         .replace('{2}', userName)
         .replace('{3}', password);
-
 
     return this.http
       .post<AuthToken>(oauth2_token_endpoint, body, httpOtions)
