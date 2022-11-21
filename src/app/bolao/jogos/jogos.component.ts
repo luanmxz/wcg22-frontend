@@ -9,6 +9,9 @@ import { ApostaService } from '../services/apostas.service';
 import { Aposta } from '../interfaces/Aposta';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/notification/notification.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewApostaDialogComponent } from 'src/app/dialogs/new-aposta-dialog/new-aposta-dialog.component';
+import { delay, pipe, tap } from 'rxjs';
 
 @Component({
   selector: 'app-jogos',
@@ -28,7 +31,8 @@ export class JogosComponent implements OnInit {
     private userService: UserService,
     private apostasService: ApostaService,
     private formBuilder: FormBuilder,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dialog: MatDialog
   ) {
     this.userService.getUser().subscribe((user) => {
       this.getApostasByUser(user.id), (this.currentUser = user);
@@ -69,23 +73,19 @@ export class JogosComponent implements OnInit {
       .subscribe((jogos: Jogo[]) => (this.jogos = jogos));
   }
 
-  save(data: any, idJogo: number) {
-    this.apostasService
-      .createAposta(data, this.currentUser.id, idJogo)
-      .subscribe({
-        next: () => {
-          this.notificationService.success(
-            'Sucesso',
-            'Aposta realizada com sucesso'
-          ),
-            this.getApostasByUser(this.currentUser.id);
+  apostar(jogo: Jogo) {
+    this.dialog
+      .open(NewApostaDialogComponent, {
+        data: {
+          jogo: jogo,
+          currentUserId: this.currentUser.id,
         },
-        error: (err: Error) => {
-          this.notificationService.error(
-            'Erro!',
-            'Não foi possível confirmar a aposta, tente novamente!'
-          );
-        },
-      });
+        width: '90%',
+        height: '70%',
+        backdropClass: 'backdropBackground',
+      })
+      .afterClosed()
+      .pipe(delay(200))
+      .subscribe(() => this.getApostasByUser(this.currentUser.id));
   }
 }

@@ -1,0 +1,80 @@
+h2 {
+  text-align: center;
+}
+
+div.times-options {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+div.times-options__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: pre-line;
+  gap: 10px;
+}
+
+img.brasao-flag {
+  width: 120px;
+  height: 95px;
+  border: 1px solid black;
+}
+
+.btn-apostar {
+  width: 140px;
+  height: 70px;
+  background-color: var(--color-2);
+}
+
+button.empate {
+  margin-top: 4rem;
+  background-color: var(--color-1);
+  color: white;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-top: 2rem;
+}
+
+.update_button {
+  width: 30%;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  background-color: var(--color-2);
+  color: var(--color-3);
+  cursor: pointer;
+  font-size: large;
+  border: none;
+  transition: 1s ease-in-out;
+  text-align: center;
+}
+.update_button:hover {
+  width: 80%;
+}
+
+.back_button {
+  border: none;
+  background-color: white;
+  color: var(--color-main-1);
+  cursor: pointer;
+  margin-left: 1rem;
+  padding-top: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+.back_button:hover {
+  transform: scale(1.2);
+}

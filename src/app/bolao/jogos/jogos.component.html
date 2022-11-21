@@ -34,37 +34,19 @@
           <h2 *ngIf="jogo.resultado == 'E'" style="color: yellow">EMPATE</h2>
           <h4>{{ jogo.golsA }} x {{ jogo.golsB }}</h4>
         </div>
-        <form
+
+        <button
+          type="button"
+          class="btn-aposta"
+          (click)="apostar(jogo)"
           *ngIf="!jogo.jaAconteceu"
-          [formGroup]="novaApostaForm"
-          (ngSubmit)="save(novaApostaForm.controls['apostouEm'].value, jogo.id)"
+          [disabled]="jaApostou(jogo.id)"
+          [ngStyle]="
+            jaApostou(jogo.id) ? { cursor: 'default' } : { cursor: 'pointer' }
+          "
         >
-          <button
-            type="submit"
-            class="btn-aposta"
-            *ngIf="!jogo.jaAconteceu"
-            [disabled]="jaApostou(jogo.id) || !novaApostaForm.valid"
-            [ngStyle]="
-              jaApostou(jogo.id) || !novaApostaForm.valid
-                ? { cursor: 'default' }
-                : { cursor: 'pointer' }
-            "
-          >
-            {{ jaApostou(jogo.id) ? "Já Apostou" : "Apostar" }}
-          </button>
-          <mat-form-field *ngIf="!jaApostou(jogo.id)">
-            <mat-label>Palpite</mat-label>
-            <mat-select formControlName="apostouEm">
-              <mat-option value="A">
-                {{ jogo.idTimeA.nomeSelecao }}
-              </mat-option>
-              <mat-option value="E"> EMPATE </mat-option>
-              <mat-option value="B">
-                {{ jogo.idTimeB.nomeSelecao }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
+          {{ jaApostou(jogo.id) ? "Já Apostou" : "Apostar" }}
+        </button>
       </div>
 
       <img

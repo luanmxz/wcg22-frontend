@@ -1,6 +1,5 @@
 :host {
-  grid-column: 2;
-  min-height: 100vh;
+  height: 100%;
   padding-top: 1rem;
 }
 :host ::ng-deep .mat-form-field-wrapper {

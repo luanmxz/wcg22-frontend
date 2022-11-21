@@ -24,6 +24,7 @@ button {
 
 html,
 body {
+  min-height: 100vh;
   height: 100%;
   overflow-x: hidden;
 }
@@ -57,4 +58,10 @@ app-bolao {
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
+}
+
+.backdropBackground {
+  background-image: url(./assets/soccer-field.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }

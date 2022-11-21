@@ -33,9 +33,9 @@ export class JogosAdminComponent implements OnInit {
           nomeSelecaoA: nomeSelecaoA,
           nomeSelecaoB: nomeSelecaoB,
         },
-        maxWidth: '100%',
-        minWidth: '60%',
-        maxHeight: '80%',
+        width: '70%',
+        height: '500px',
+        backdropClass: 'backdropBackground',
       })
       .afterClosed();
   }

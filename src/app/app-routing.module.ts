@@ -35,6 +35,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./backoffice/admin.module').then((m) => m.AdminModule),
   },
+
   {
     path: 'bolao',
     data: { title: 'Bolao' },

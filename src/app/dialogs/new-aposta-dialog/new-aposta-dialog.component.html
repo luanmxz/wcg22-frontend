@@ -1,0 +1,51 @@
+<h2>Faça sua aposta</h2>
+
+<div class="times-options">
+  <div class="times-options__wrapper">
+    <img src="{{ data.jogo.idTimeA.brasao }}" class="brasao-flag" />
+    <h3>{{ data.jogo.idTimeA.nomeSelecao }}</h3>
+    <button
+      class="btn-apostar"
+      type="button"
+      [mat-dialog-close]="true"
+      (click)="save('A', data.jogo.id)"
+    >
+      Apostar
+    </button>
+  </div>
+
+  <div class="times-options__wrapper">
+    <h3>X</h3>
+    <button
+      class="btn-apostar empate"
+      type="button"
+      [mat-dialog-close]="true"
+      (click)="save('E', data.jogo.id)"
+    >
+      Empate
+    </button>
+  </div>
+
+  <div class="times-options__wrapper">
+    <img src="{{ data.jogo.idTimeB.brasao }}" class="brasao-flag" />
+    <h3>{{ data.jogo.idTimeB.nomeSelecao }}</h3>
+    <button
+      class="btn-apostar"
+      type="button"
+      [mat-dialog-close]="true"
+      (click)="save('B', data.jogo.id)"
+    >
+      Apostar
+    </button>
+  </div>
+</div>
+
+<div class="buttons">
+  <button
+    class="back_button fa-3x back_button"
+    type="button"
+    [mat-dialog-close]="true"
+  >
+    <i class="fa-solid fa-circle-arrow-left"></i>
+  </button>
+</div>

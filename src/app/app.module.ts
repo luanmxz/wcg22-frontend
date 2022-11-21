@@ -22,12 +22,14 @@ import { SetResultJogoDialog } from './dialogs/dialog-set-resultado-jogo/set-res
 import { NotificationListComponent } from './notification/notification.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NotificationService } from './notification/notification.service';
+import { NewApostaDialogComponent } from './dialogs/new-aposta-dialog/new-aposta-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     SetResultJogoDialog,
+    NewApostaDialogComponent,
     NotificationListComponent,
   ],
   imports: [
